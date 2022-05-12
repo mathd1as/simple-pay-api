@@ -1,7 +1,7 @@
 import { TransactionRepository } from '../../data/contracts'
 
 export class DatabaseRepository implements TransactionRepository {
-  saveTransaction (): Promise<void> {
-
+  saveTransaction (): void {
+    console.log('operação salva no banco de dados!!')
   }
 }
