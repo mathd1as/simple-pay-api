@@ -14,5 +14,15 @@
   "plugins": [
     "@typescript-eslint"
   ],
-  "rules": {}
+  "rules": {
+    "space-before-function-paren": [
+      "error",
+      {
+        "anonymous": "always",
+        "named": "always",
+        "asyncArrow": "always",
+        "constructor": "always"
+      }
+    ]
+  }
 }
