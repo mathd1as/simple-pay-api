@@ -6,7 +6,7 @@ export class ProcessTransactionService implements ProcessTransaction {
     console.log('teste')
   }
 
-  async exec (): Promise<void> {
+  async exec(): Promise<void> {
     this.transactionRepository.saveTransaction()
   }
 }

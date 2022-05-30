@@ -1,6 +1,6 @@
 import { Controller } from '../contracts/controller'
 import { HttpResponse } from '../contracts/http'
-import { ProcessTransaction } from '../../../domain/usecase'
+import { ProcessTransaction } from '../../domain/usecase'
 
 export class ProcessTransactionController implements Controller {
   constructor(private readonly processTransaction: ProcessTransaction) { }

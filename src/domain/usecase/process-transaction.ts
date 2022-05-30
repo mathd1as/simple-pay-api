@@ -1,3 +1,3 @@
 export interface ProcessTransaction {
-  exec: () => Promise<boolean>
+  exec: () => Promise<void>
 }
