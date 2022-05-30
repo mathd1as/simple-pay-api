@@ -1,4 +1,3 @@
-import app from '../main/config/app'
-import { env } from '../main/config/env'
+import './config/module-alias'
 
-app.listen(env.port, () => console.log(`Server running at http://localhost:${env.port}`))
+console.log('works')
