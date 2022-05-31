@@ -1,8 +1,8 @@
-export type HttpResponse = {
-  statusCode: number;
-  body: any;
-};
+export interface HttpResponse {
+  statusCode: number
+  body: any
+}
 
-export type HttpRequest = {
-  transaction: any;
-};
+export interface HttpRequest {
+  transaction: any
+}
