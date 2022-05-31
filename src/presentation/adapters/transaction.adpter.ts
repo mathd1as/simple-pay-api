@@ -1,3 +1,3 @@
-export interface TransactionAdapter {
+export type TransactionAdapter = {
   teste: 'teste'
 }
