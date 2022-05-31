@@ -1,4 +1,4 @@
-interface Transaction {
+export type Transaction = {
   value: number
   description: string
   paymentMethod: PaymentMethod
