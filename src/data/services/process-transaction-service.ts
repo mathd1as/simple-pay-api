@@ -10,7 +10,7 @@ export class ProcessTransactionService implements ProcessTransaction {
     let payableObject: Payable | undefined
 
     if (params.paymentMethod === PaymentMethod.credit_card) {
-      const value = params.value * 0.5
+      const value = params.value * 0.95
       const paymentDate = new Date()
       paymentDate.setDate(paymentDate.getDate() + 30)
 
@@ -22,7 +22,7 @@ export class ProcessTransactionService implements ProcessTransaction {
     }
 
     if (params.paymentMethod === PaymentMethod.debit_card) {
-      const value = params.value * 0.3
+      const value = params.value * 0.97
       payableObject = {
         value,
         status: PayableStatus.paid,
