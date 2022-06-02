@@ -1,30 +1,43 @@
 import { ProcessTransaction } from '@/domain/features'
-import { PaymentMethod, PayableStatus } from '@/domain/models'
+import { PaymentMethod, PayableStatus, Payable } from '@/domain/models'
+import { ProcessTransactionRepo } from '@/data/contracts'
+import { ProcessTransactionError } from '@/domain/errors'
 
 export class ProcessTransactionService implements ProcessTransaction {
+  constructor (private readonly processTransactionRepo: ProcessTransactionRepo) {}
+
   async exec (params: ProcessTransaction.Params): Promise<ProcessTransaction.Result> {
+    let payableObject: Payable | undefined
+
     if (params.paymentMethod === PaymentMethod.credit_card) {
+      const value = params.value * 0.5
       const paymentDate = new Date()
       paymentDate.setDate(paymentDate.getDate() + 30)
 
-      const payableObject = {
+      payableObject = {
+        value,
         status: PayableStatus.waiting_funds,
-        paymentDate: paymentDate
+        paymentDateHour: paymentDate
       }
-
-      console.log({ payableObject })
-      return 'teste1'
     }
 
     if (params.paymentMethod === PaymentMethod.debit_card) {
-      const payableObject = {
+      const value = params.value * 0.3
+      payableObject = {
+        value,
         status: PayableStatus.paid,
-        paymentDate: new Date()
+        paymentDateHour: new Date()
       }
-
-      console.log({ payableObject })
-      return 'teste1'
     }
+
+    console.log({ payableObject })
+
+    if (payableObject === undefined) {
+      throw new ProcessTransactionError()
+    }
+
+    await this.processTransactionRepo.saveTransaction(params)
+    await this.processTransactionRepo.savePayable(payableObject)
 
     return 'teste'
   }
