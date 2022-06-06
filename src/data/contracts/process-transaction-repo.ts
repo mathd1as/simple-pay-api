@@ -8,7 +8,7 @@ export interface ProcessTransactionRepo {
 namespace ProcessTransactionRepo {
   export type PayableParams = Payable
 
-  export type PayableResult = string | undefined
+  export type PayableResult = number
 
   export type TrasactionParams = Transaction
 

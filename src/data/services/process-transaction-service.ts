@@ -1,5 +1,5 @@
 import { ProcessTransaction } from '@/domain/features'
-import { PaymentMethod, PayableStatus, Payable } from '@/domain/models'
+import { PaymentMethod, PayableStatus, Payable, Transaction } from '@/domain/models'
 import { ProcessTransactionRepo } from '@/data/contracts'
 import { ProcessTransactionError } from '@/domain/errors'
 
@@ -36,8 +36,19 @@ export class ProcessTransactionService implements ProcessTransaction {
       throw new ProcessTransactionError()
     }
 
-    await this.processTransactionRepo.saveTransaction(params)
-    await this.processTransactionRepo.savePayable(payableObject)
+    const payableId = await this.processTransactionRepo.savePayable(payableObject)
+
+    const transactionObject: Transaction = {
+      value: params.value,
+      paymentMethod: params.paymentMethod,
+      cardNumber: params.cardNumber,
+      CardholderName: params.CardholderName,
+      validity: params.validity,
+      securityCode: params.securityCode,
+      payableId
+    }
+
+    await this.processTransactionRepo.saveTransaction(transactionObject)
 
     return 'teste'
   }
