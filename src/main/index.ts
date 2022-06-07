@@ -1,3 +1,4 @@
+import 'reflect-metadata'
 import './config/module-alias'
 
 import { app } from '@/main/config/app'

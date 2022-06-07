@@ -19,7 +19,9 @@
       "@/tests/*": [
         "../tests/*"
       ]
-    }
+    },
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
   },
   "include": [
     "src",
