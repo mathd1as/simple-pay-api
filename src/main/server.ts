@@ -1,6 +1,6 @@
 import 'reflect-metadata'
 import './config/module-alias'
-import '@/infra/database/data-source'
+import '@/infra/typeorm/data-source'
 
 import { app } from '@/main/config/app'
 import { env } from '@/main/config/env'
