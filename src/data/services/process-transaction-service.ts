@@ -1,6 +1,6 @@
 import { ProcessTransaction } from '@/domain/features'
 import { PaymentMethod, PayableStatus, Payable, Transaction } from '@/domain/models'
-import { ProcessTransactionRepo } from '@/data/contracts'
+import { ProcessTransactionRepo } from '@/data/contracts/repos'
 import { ProcessTransactionError } from '@/domain/errors'
 
 export class ProcessTransactionService implements ProcessTransaction {

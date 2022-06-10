@@ -5,7 +5,7 @@ export interface ProcessTransactionRepo {
   saveTransaction: (params: ProcessTransactionRepo.TrasactionParams) => Promise<ProcessTransactionRepo.TransactionResult>
 }
 
-namespace ProcessTransactionRepo {
+export namespace ProcessTransactionRepo {
   export type PayableParams = Payable
 
   export type PayableResult = number
