@@ -4,7 +4,7 @@ import { PaymentMethod } from '@/domain/models'
 export class ProcessTransactionController {
   constructor (private readonly processTransaction: ProcessTransaction) {}
 
-  async handle (httpRequest: any): Promise<void> {
+  async handle (httpRequest: any): Promise<any> {
     const teste = {
       value: 10,
       paymentMethod: PaymentMethod.credit_card,
@@ -14,6 +14,11 @@ export class ProcessTransactionController {
       securityCode: 154
     }
 
-    await this.processTransaction.exec(teste)
+    const result = await this.processTransaction.exec(teste)
+
+    return {
+      statusCode: 200,
+      data: result
+    }
   }
 }

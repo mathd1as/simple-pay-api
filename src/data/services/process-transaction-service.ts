@@ -30,8 +30,6 @@ export class ProcessTransactionService implements ProcessTransaction {
       }
     }
 
-    console.log({ payableObject })
-
     if (payableObject === undefined) {
       throw new ProcessTransactionError()
     }
