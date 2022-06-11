@@ -1,8 +1,8 @@
-import { ProcessTransaction } from '@/domain/features'
+import { ProcessTransactionService } from '@/data/services'
 import { PaymentMethod } from '@/domain/models'
 
 export class ProcessTransactionController {
-  constructor (private readonly processTransaction: ProcessTransaction) {}
+  constructor (private readonly ProcessTransactionService: ProcessTransactionService) {}
 
   async handle (httpRequest: any): Promise<any> {
     const teste = {
@@ -14,7 +14,7 @@ export class ProcessTransactionController {
       securityCode: 154
     }
 
-    const result = await this.processTransaction.exec(teste)
+    const result = await this.ProcessTransactionService.exec(teste)
 
     return {
       statusCode: 200,
