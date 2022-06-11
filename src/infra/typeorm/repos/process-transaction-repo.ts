@@ -1,6 +1,6 @@
 import { ProcessTransactionRepo } from '@/data/contracts/repos'
 
-export class TransactionRepo implements ProcessTransactionRepo {
+export class ProcessTransactionRepoository implements ProcessTransactionRepo {
   async savePayable (params: ProcessTransactionRepo.PayableParams): Promise<ProcessTransactionRepo.PayableResult> {
     return 10
   }

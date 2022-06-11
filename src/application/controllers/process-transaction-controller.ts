@@ -1,7 +1,7 @@
 import { ProcessTransaction } from '@/domain/features'
 import { PaymentMethod } from '@/domain/models'
 
-export class TransactionController {
+export class ProcessTransactionController {
   constructor (private readonly processTransaction: ProcessTransaction) {}
 
   async handle (httpRequest: any): Promise<void> {
