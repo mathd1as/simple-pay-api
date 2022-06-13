@@ -1,6 +1,6 @@
 import { ProcessTransactionRepo } from '@/data/contracts/repos'
 import { DataSource } from 'typeorm'
-import { PgPayable } from '@/infra/typeorm/entities/payable'
+import { PgPayable, PgTransaction } from '@/infra/typeorm/entities'
 
 export class ProcessTransactionRepoository implements ProcessTransactionRepo {
   constructor (private readonly dataSource: DataSource) {}
@@ -20,6 +20,17 @@ export class ProcessTransactionRepoository implements ProcessTransactionRepo {
   }
 
   async saveTransaction (params: ProcessTransactionRepo.TrasactionParams): Promise<ProcessTransactionRepo.TransactionResult> {
-    return 'teste'
+    // const { value, paymentMethod, cardNumber, CardholderName, validity, payableId } = params
+
+    const insertResult = await this.dataSource
+      .createQueryBuilder()
+      .insert()
+      .into(PgTransaction)
+      .values([
+        // { value, paymentMethod, cardNumber, CardholderName, validity, payableId }
+      ])
+      .execute()
+
+    return insertResult.identifiers[0].id
   }
 }

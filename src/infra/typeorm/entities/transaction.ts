@@ -19,4 +19,7 @@ export class PgTransaction {
 
   @Column({ name: 'validity', nullable: false })
   validity!: Date
+
+  @Column({ name: 'payable_id', nullable: false })
+  payableId!: number
 }
