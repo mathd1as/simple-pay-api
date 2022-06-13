@@ -6,8 +6,8 @@ export class ProcessTransactionRepoository implements ProcessTransactionRepo {
   constructor (private readonly dataSource: DataSource) {}
   async savePayable (params: ProcessTransactionRepo.PayableParams): Promise<ProcessTransactionRepo.PayableResult> {
     const { value, status, paymentDateHour } = params
-    console.log({ params })
-    const teste = await this.dataSource
+
+    const insertResult = await this.dataSource
       .createQueryBuilder()
       .insert()
       .into(PgPayable)
@@ -16,8 +16,7 @@ export class ProcessTransactionRepoository implements ProcessTransactionRepo {
       ])
       .execute()
 
-    console.log({ teste })
-    return 10
+    return insertResult.identifiers[0].id
   }
 
   async saveTransaction (params: ProcessTransactionRepo.TrasactionParams): Promise<ProcessTransactionRepo.TransactionResult> {
