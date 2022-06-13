@@ -5,18 +5,18 @@ export class PgTransaction {
   @PrimaryGeneratedColumn()
   id!: number
 
-  @Column({ name: 'nome', nullable: true })
-  name?: string
+  @Column({ name: 'value', nullable: false })
+  value!: number
 
-  @Column()
-  email!: string
+  @Column({ name: 'payment_method', nullable: false })
+  paymentMethod!: string
 
-  @Column({ name: 'id_facebook', nullable: true })
-  facebookId?: string
+  @Column({ name: 'card_number', nullable: false })
+  cardNumber!: number
 
-  @Column({ name: 'foto', nullable: true })
-  pictureUrl?: string
+  @Column({ name: 'Cardholder_name', nullable: false })
+  CardholderName!: string
 
-  @Column({ name: 'iniciais', nullable: true })
-  initials?: string
+  @Column({ name: 'validity', nullable: false })
+  validity!: Date
 }
