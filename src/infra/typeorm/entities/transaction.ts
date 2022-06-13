@@ -5,10 +5,10 @@ export class PgTransaction {
   @PrimaryGeneratedColumn()
   id!: number
 
-  @Column({ name: 'value', nullable: false })
+  @Column({ name: 'value', type: 'float', nullable: false })
   value!: number
 
-  @Column({ name: 'payment_method', nullable: false })
+  @Column('varchar', { name: 'payment_method', length: 30, nullable: false })
   paymentMethod!: string
 
   @Column({ name: 'card_number', nullable: false })

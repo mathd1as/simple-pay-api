@@ -13,6 +13,6 @@ export class PgPayable {
   @Column('varchar', { length: 30, nullable: false })
   status!: PayableStatus
 
-  @Column({ nullable: false })
+  @Column({ name: 'payment_date_hour', nullable: false })
   paymentDateHour!: Date
 }
