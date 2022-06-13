@@ -1,3 +1,5 @@
+import { PayableStatus } from '@/domain/models'
+
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
 
 @Entity({ name: 'payable' })
@@ -5,15 +7,12 @@ export class PgPayable {
   @PrimaryGeneratedColumn()
   id!: number
 
-  @Column({ name: 'value', nullable: false })
+  @Column({ type: 'float', nullable: false })
   value!: number
 
-  @Column({ name: 'status', nullable: false })
-  status!: string
+  @Column('varchar', { length: 30, nullable: false })
+  status!: PayableStatus
 
-  @Column({ name: 'payment_date_hour', nullable: false })
-  paymentDateHour!: number
-
-  @Column({ name: 'transaction_id', nullable: false })
-  transactionId!: number
+  @Column({ nullable: false })
+  paymentDateHour!: Date
 }
