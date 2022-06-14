@@ -4,7 +4,7 @@ export type TransactionDto = {
   value: number
   paymentMethod: PaymentMethod
   cardNumber: number
-  CardholderName: string
+  cardHolderName: string
   validity: Date
   securityCode: number
 }

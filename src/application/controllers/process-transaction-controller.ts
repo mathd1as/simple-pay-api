@@ -9,7 +9,7 @@ export class ProcessTransactionController {
       value: 10,
       paymentMethod: PaymentMethod.credit_card,
       cardNumber: 1044,
-      CardholderName: 'string',
+      cardHolderName: 'string',
       validity: new Date(),
       securityCode: 154
     }

@@ -40,7 +40,7 @@ export class ProcessTransactionService implements ProcessTransaction {
       value: params.value,
       paymentMethod: params.paymentMethod,
       cardNumber: params.cardNumber,
-      CardholderName: params.CardholderName,
+      cardHolderName: params.cardHolderName,
       validity: params.validity,
       securityCode: params.securityCode,
       payableId
