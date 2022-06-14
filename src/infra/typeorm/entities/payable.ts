@@ -1,4 +1,3 @@
-import { PayableStatus } from '@/domain/models'
 
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
 
@@ -11,7 +10,7 @@ export class PgPayable {
   value!: number
 
   @Column('varchar', { length: 30, nullable: false })
-  status!: PayableStatus
+  status!: string
 
   @Column({ name: 'payment_date_hour', nullable: false })
   paymentDateHour!: Date

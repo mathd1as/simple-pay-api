@@ -1,4 +1,4 @@
 export enum PayableStatus {
-  'paid',
-  'waiting_funds'
+  paid = 'paid',
+  waiting_funds = 'waiting_funds'
 }

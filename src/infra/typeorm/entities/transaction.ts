@@ -14,7 +14,7 @@ export class PgTransaction {
   @Column({ name: 'card_number', nullable: false })
   cardNumber!: number
 
-  @Column({ name: 'card_holder_name', nullable: false })
+  @Column('varchar', { name: 'card_holder_name', length: 30, nullable: false })
   cardHolderName!: string
 
   @Column({ name: 'validity', nullable: false })

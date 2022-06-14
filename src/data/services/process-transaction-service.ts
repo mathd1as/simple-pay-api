@@ -19,9 +19,7 @@ export class ProcessTransactionService implements ProcessTransaction {
         status: PayableStatus.waiting_funds,
         paymentDateHour: paymentDate
       }
-    }
-
-    if (params.paymentMethod === PaymentMethod.debit_card) {
+    } else {
       const value = params.value * 0.97
       payableObject = {
         value,
@@ -41,9 +39,9 @@ export class ProcessTransactionService implements ProcessTransaction {
       paymentMethod: params.paymentMethod,
       cardNumber: params.cardNumber,
       cardHolderName: params.cardHolderName,
-      validity: params.validity,
       securityCode: params.securityCode,
-      payableId
+      payableId,
+      validity: new Date()
     }
 
     await this.processTransactionRepo.saveTransaction(transactionObject)
