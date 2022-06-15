@@ -7,7 +7,6 @@ export class ProcessTransactionRepoository implements ProcessTransactionRepo {
   async savePayable (params: ProcessTransactionRepo.PayableParams): Promise<ProcessTransactionRepo.PayableResult> {
     try {
       const { value, status, paymentDateHour } = params
-      console.log({ params })
       const insertResult = await this.dataSource
         .createQueryBuilder()
         .insert()
@@ -19,14 +18,12 @@ export class ProcessTransactionRepoository implements ProcessTransactionRepo {
 
       return insertResult.identifiers[0].id
     } catch (error) {
-      // console.log(error)
       return 0
     }
   }
 
   async saveTransaction (params: ProcessTransactionRepo.TrasactionParams): Promise<ProcessTransactionRepo.TransactionResult> {
     try {
-      console.log({ params })
       const { value, paymentMethod, cardNumber, cardHolderName, validity, payableId } = params
       const insertResult = await this.dataSource
         .createQueryBuilder()
@@ -39,7 +36,6 @@ export class ProcessTransactionRepoository implements ProcessTransactionRepo {
 
       return insertResult.identifiers[0].id
     } catch (error) {
-      // console.log(error)
       return 'teste'
     }
   }
