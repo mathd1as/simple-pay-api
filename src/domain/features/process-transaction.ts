@@ -8,5 +8,5 @@ export interface ProcessTransaction {
 export namespace ProcessTransaction {
   export type Params = TransactionDto
 
-  export type Result = string | ProcessTransactionError
+  export type Result = { id: number } | ProcessTransactionError
 }

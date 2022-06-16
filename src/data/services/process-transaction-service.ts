@@ -44,8 +44,8 @@ export class ProcessTransactionService implements ProcessTransaction {
       validity: new Date()
     }
 
-    await this.processTransactionRepo.saveTransaction(transactionObject)
+    const id = await this.processTransactionRepo.saveTransaction(transactionObject)
 
-    return 'teste'
+    return { id }
   }
 }

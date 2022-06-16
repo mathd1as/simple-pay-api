@@ -23,20 +23,16 @@ export class ProcessTransactionRepoository implements ProcessTransactionRepo {
   }
 
   async saveTransaction (params: ProcessTransactionRepo.TrasactionParams): Promise<ProcessTransactionRepo.TransactionResult> {
-    try {
-      const { value, paymentMethod, cardNumber, cardHolderName, validity, payableId } = params
-      const insertResult = await this.dataSource
-        .createQueryBuilder()
-        .insert()
-        .into(PgTransaction)
-        .values([
-          { value, paymentMethod, cardNumber, cardHolderName, validity, payableId }
-        ])
-        .execute()
+    const { value, paymentMethod, cardNumber, cardHolderName, validity, payableId } = params
+    const insertResult = await this.dataSource
+      .createQueryBuilder()
+      .insert()
+      .into(PgTransaction)
+      .values([
+        { value, paymentMethod, cardNumber, cardHolderName, validity, payableId }
+      ])
+      .execute()
 
-      return insertResult.identifiers[0].id
-    } catch (error) {
-      return 'teste'
-    }
+    return insertResult.identifiers[0].id
   }
 }

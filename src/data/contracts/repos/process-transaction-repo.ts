@@ -12,5 +12,5 @@ export namespace ProcessTransactionRepo {
 
   export type TrasactionParams = Transaction
 
-  export type TransactionResult = string
+  export type TransactionResult = number
 }
