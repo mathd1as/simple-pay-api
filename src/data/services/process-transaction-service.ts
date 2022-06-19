@@ -28,24 +28,24 @@ export class ProcessTransactionService implements ProcessTransaction {
       }
     }
 
-    if (payableObject === undefined) {
+    try {
+      const payableId = await this.processTransactionRepo.savePayable(payableObject)
+
+      const transactionObject = {
+        value: params.value,
+        paymentMethod: params.paymentMethod,
+        cardNumber: params.cardNumber,
+        cardHolderName: params.cardHolderName,
+        securityCode: params.securityCode,
+        payableId,
+        validity: new Date()
+      }
+
+      const id = await this.processTransactionRepo.saveTransaction(transactionObject)
+
+      return { id }
+    } catch (error) {
       throw new ProcessTransactionError()
     }
-
-    const payableId = await this.processTransactionRepo.savePayable(payableObject)
-
-    const transactionObject = {
-      value: params.value,
-      paymentMethod: params.paymentMethod,
-      cardNumber: params.cardNumber,
-      cardHolderName: params.cardHolderName,
-      securityCode: params.securityCode,
-      payableId,
-      validity: new Date()
-    }
-
-    const id = await this.processTransactionRepo.saveTransaction(transactionObject)
-
-    return { id }
   }
 }
