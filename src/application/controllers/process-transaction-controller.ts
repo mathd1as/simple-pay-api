@@ -11,7 +11,7 @@ type HttpRequest = {
 export class ProcessTransactionController {
   constructor (private readonly ProcessTransactionService: ProcessTransactionService) {}
   async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
-    if (httpRequest.token === undefined) return unauthorized()
+    if (httpRequest.token === undefined || httpRequest.token === '') return unauthorized()
     try {
       const result = await this.ProcessTransactionService.exec(httpRequest.body)
       return ok(result)
