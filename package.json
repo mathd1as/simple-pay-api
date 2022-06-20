@@ -8,7 +8,7 @@
   "scripts": {
     "build": "rimraf dist && tsc -p tsconfig-build.json",
     "start": "node dist/main/server.js",
-    "dev": "nodemon --watch 'src/' --exec 'ts-node src/main/server.ts' -e ts",
+    "dev": "ts-node-dev --respawn --transpile-only -r dotenv/config src/main/server.ts",
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix",
     "test": "jest --passWithNoTests --no-cache --runInBand",
@@ -40,7 +40,6 @@
     "jest": "^28.1.0",
     "jest-mock-extended": "^2.0.6",
     "lint-staged": "^12.5.0",
-    "nodemon": "^2.0.16",
     "pg-mem": "^2.4.11",
     "prettier": "^2.6.2",
     "rimraf": "^3.0.2",
