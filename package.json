@@ -38,6 +38,7 @@
     "eslint-plugin-promise": "^5.2.0",
     "husky": "^8.0.1",
     "jest": "^28.1.0",
+    "jest-mock-extended": "^2.0.6",
     "lint-staged": "^12.5.0",
     "nodemon": "^2.0.16",
     "pg-mem": "^2.4.11",
