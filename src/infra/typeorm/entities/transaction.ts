@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm'
+import { PgPayable } from '@/infra/typeorm/entities'
 
 @Entity({ name: 'transaction' })
 export class PgTransaction {
@@ -20,6 +21,7 @@ export class PgTransaction {
   @Column({ name: 'validity', nullable: false })
   validity!: Date
 
-  @Column({ name: 'payable_id', nullable: false })
-  payableId!: number
+  @OneToOne(() => PgPayable)
+  @JoinColumn()
+  payable!: PgPayable
 }
