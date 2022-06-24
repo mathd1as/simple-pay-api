@@ -4,5 +4,5 @@ import { adaptExpressRoute } from '@/infra/express/express-route'
 
 export default (router: Router): void => {
   const controller = makeProcessTransactionController()
-  router.post('/process-transaction', adaptExpressRoute(controller))
+  router.post('/transaction', adaptExpressRoute(controller))
 }
