@@ -1,0 +1,10 @@
+import { User } from '@/domain/models/user'
+
+export interface CreateUser {
+  exec: (params: CreateUser.Params) => Promise<CreateUser.Result>
+}
+
+export namespace CreateUser {
+  export type Params = User
+  export type Result = { id: number }
+}
