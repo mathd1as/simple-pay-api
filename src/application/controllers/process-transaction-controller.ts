@@ -1,19 +1,36 @@
 import { ProcessTransactionService } from '@/data/services'
 import { HttpResponse } from '@/application/helpers/http'
-import { TransactionDto } from '@/domain/models/transaction-dto'
-import { serverError, unauthorized, ok } from '@/application/helpers'
+import { serverError, ok } from '@/application/helpers'
+import { PaymentMethod, TransactionDto } from '@/domain/models'
 
 type HttpRequest = {
-  body: TransactionDto
-  token: string
+  body: {
+    value: number
+    description: string
+    paymentMethod: PaymentMethod
+    cardNumber: number
+    cardHolderName: string
+    cardExpiringDate: string
+    securityCode: number
+  }
+  locals: { userId: number }
 }
 
 export class ProcessTransactionController {
   constructor (private readonly ProcessTransactionService: ProcessTransactionService) {}
   async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
-    if (httpRequest.token === undefined || httpRequest.token === '') return unauthorized()
+    const transactionDto: TransactionDto = {
+      value: httpRequest.body.value,
+      description: httpRequest.body.description,
+      paymentMethod: httpRequest.body.paymentMethod,
+      cardNumber: httpRequest.body.cardNumber,
+      cardHolderName: httpRequest.body.cardHolderName,
+      cardExpiringDate: httpRequest.body.cardExpiringDate,
+      securityCode: httpRequest.body.securityCode,
+      userId: httpRequest.locals.userId
+    }
     try {
-      const result = await this.ProcessTransactionService.exec(httpRequest.body)
+      const result = await this.ProcessTransactionService.exec(transactionDto)
       return ok(result)
     } catch (error) {
       return serverError(error)

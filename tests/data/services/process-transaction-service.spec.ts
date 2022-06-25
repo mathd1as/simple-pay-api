@@ -11,7 +11,8 @@ describe('ProcessTransactionService', () => {
       cardNumber: 4854,
       cardHolderName: 'Fulano Teste de Tal',
       cardExpiringDate: '01/22',
-      securityCode: 123
+      securityCode: 123,
+      userId: 1
     }
 
     const transactionIdMock = 30
@@ -37,7 +38,8 @@ describe('ProcessTransactionService', () => {
       cardNumber: 4854,
       cardHolderName: 'Fulano Teste de Tal',
       cardExpiringDate: '01/22',
-      securityCode: 123
+      securityCode: 123,
+      userId: 1
     }
 
     const repoMock = {
@@ -58,7 +60,8 @@ describe('ProcessTransactionService', () => {
       cardNumber: 4854,
       cardHolderName: 'Fulano Teste de Tal',
       cardExpiringDate: '01/22',
-      securityCode: 123
+      securityCode: 123,
+      userId: 1
     }
 
     const repoMock = {

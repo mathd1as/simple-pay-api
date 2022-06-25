@@ -8,4 +8,5 @@ export type TransactionDto = {
   cardHolderName: string
   cardExpiringDate: string
   securityCode: number
+  userId: number
 }

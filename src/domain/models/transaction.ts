@@ -8,4 +8,5 @@ export type Transaction = {
   validity: Date
   securityCode: number
   payableId: number
+  userId: number
 }

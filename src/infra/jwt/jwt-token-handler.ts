@@ -11,7 +11,7 @@ export class JwtTokenHandler implements TokenGenerator, TokenValidator {
   }
 
   async validate ({ token }: TokenValidator.Input): Promise<TokenValidator.Output> {
-    const payload = verify(token, this.secret) as JwtPayload
-    return payload.key
+    const payload = verify(token.split(' ')[1], this.secret) as JwtPayload
+    return payload.id
   }
 }

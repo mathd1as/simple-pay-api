@@ -38,6 +38,7 @@ export class ProcessTransactionService implements ProcessTransaction {
         cardHolderName: params.cardHolderName,
         securityCode: params.securityCode,
         payableId,
+        userId: 1,
         validity: new Date()
       }
 
@@ -45,6 +46,7 @@ export class ProcessTransactionService implements ProcessTransaction {
 
       return { id }
     } catch (error) {
+      console.log({ error })
       throw new ProcessTransactionError()
     }
   }
