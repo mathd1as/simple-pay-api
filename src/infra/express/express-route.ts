@@ -8,12 +8,12 @@ export const adaptExpressRoute = (controller: any): RequestHandler => {
       payloadController = {
         body: req.body,
         token: req.headers.authorization,
-        locals: { userId: req.locals.userId }
+        locals: { userId: res.locals.userId }
       }
     } else {
       payloadController = {
         body: req.body,
-        locals: { userId: req.locals.userId }
+        locals: { userId: res.locals.userId }
       }
     }
 
