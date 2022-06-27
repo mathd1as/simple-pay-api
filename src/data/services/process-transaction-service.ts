@@ -38,7 +38,7 @@ export class ProcessTransactionService implements ProcessTransaction {
         cardHolderName: params.cardHolderName,
         securityCode: params.securityCode,
         payableId,
-        userId: 1,
+        userId: params.userId,
         validity: new Date()
       }
 
