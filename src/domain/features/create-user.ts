@@ -1,3 +1,4 @@
+import { HttpResponse } from '@/application/helpers'
 import { User } from '@/domain/models/user'
 
 export interface CreateUser {
@@ -6,5 +7,5 @@ export interface CreateUser {
 
 export namespace CreateUser {
   export type Params = User
-  export type Result = { id: number }
+  export type Result = { id: number } | HttpResponse<Error>
 }

@@ -11,4 +11,7 @@ export class pgUser {
   @Index({ unique: true })
   @Column('varchar', { name: 'email', length: 30, nullable: false })
   email!: string
+
+  @Column('varchar', { name: 'password', length: 255, nullable: false })
+  password!: string
 }

@@ -4,10 +4,10 @@ import { CreateUserRepo } from '@/data/contracts/repos/create-user-repo'
 export class CreateUserService implements CreateUser {
   constructor (private readonly createUserRepo: CreateUserRepo) {}
   async exec (params: CreateUser.Params): Promise<CreateUser.Result> {
-    const user = {
-      name: params.name,
-      email: params.email
+    const registeredEmail = await this.createUserRepo.validateEmail({ email: params.email })
+    if (registeredEmail) {
+      throw new Error('Email já cadastrado')
     }
-    return await this.createUserRepo.perform(user)
+    return await this.createUserRepo.perform(params)
   }
 }
