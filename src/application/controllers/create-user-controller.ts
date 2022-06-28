@@ -12,7 +12,7 @@ export class CreateUserController {
   async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
       if (httpRequest.body.password !== httpRequest.body.confirmPassword) {
-        throw new Error('As senhas não coincidem ')
+        throw new Error('As senhas não coincidem')
       }
       const user = {
         name: httpRequest.body.name,
