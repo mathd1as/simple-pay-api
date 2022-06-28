@@ -3,6 +3,8 @@ export interface AuthenticationRepo {
 }
 
 export namespace AuthenticationRepo {
-  export type Params = { id: String }
-  export type Result = Boolean
+  export type Params = { email: string }
+  export type Result = {
+    password: string
+  }
 }
