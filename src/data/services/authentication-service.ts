@@ -13,13 +13,18 @@ export class AuthenticationService implements Authentication {
   async exec (params: Authentication.Params): Promise<Authentication.Reuslt> {
     const { email } = params
 
-    const passwordHash = await this.authenticationRepo.verifyUser({ email })
-    const validPassord = await this.hashComparator.compare({ passwordHash: passwordHash.password, password: params.password })
-    console.log({ validPassord })
+    const user = await this.authenticationRepo.verifyUser({ email })
+    console.log({ user })
+    const validPassord = await this.hashComparator.compare({ passwordHash: user.password, password: params.password })
+
     if (!validPassord) {
       throw new Error('Senha incorreta')
     }
-    const accessToken = await this.crypto.generate({ key: '10', expirationInMs: 30000 })
+    const payload = {
+      id: user.id,
+      email: params.email
+    }
+    const accessToken = await this.crypto.generate({ key: payload, expirationInMs: 30000 })
     return { accessToken }
   }
 }

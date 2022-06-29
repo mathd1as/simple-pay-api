@@ -33,6 +33,7 @@ export class ProcessTransactionController {
       const result = await this.ProcessTransactionService.exec(transactionDto)
       return ok(result)
     } catch (error) {
+      console.log(error)
       return serverError(error)
     }
   }

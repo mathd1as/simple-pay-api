@@ -6,5 +6,6 @@ export namespace AuthenticationRepo {
   export type Params = { email: string }
   export type Result = {
     password: string
+    id: number
   }
 }
