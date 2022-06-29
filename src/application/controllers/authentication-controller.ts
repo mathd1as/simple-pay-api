@@ -1,6 +1,7 @@
 import { AuthenticationService } from '@/data/services/authentication-service'
+import { AuthenticationError } from '@/domain/errors/authentication-error'
 
-import { badRequest, ok, HttpResponse, serverError } from '../helpers'
+import { badRequest, ok, HttpResponse, serverError, unauthorized } from '../helpers'
 
 type HttpRequest = {
   body: {
@@ -19,6 +20,9 @@ export class AuthenticationController {
       return ok(result)
     } catch (error) {
       console.log(error)
+      if (error instanceof AuthenticationError) {
+        return unauthorized()
+      }
       return serverError(error)
     }
   }

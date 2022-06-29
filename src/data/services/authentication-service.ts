@@ -2,6 +2,7 @@ import { Authentication } from '@/domain/features/authentication'
 import { TokenGenerator } from '@/data/contracts/crypto/token'
 import { AuthenticationRepo } from '@/data/contracts/repos/authentication-repo'
 import { HashComparator } from '@/data/contracts/crypto/password'
+import { AuthenticationError } from '@/domain/errors/authentication-error'
 
 export class AuthenticationService implements Authentication {
   constructor (
@@ -18,7 +19,7 @@ export class AuthenticationService implements Authentication {
     const validPassord = await this.hashComparator.compare({ passwordHash: user.password, password: params.password })
 
     if (!validPassord) {
-      throw new Error('Senha incorreta')
+      throw new AuthenticationError()
     }
     const payload = {
       id: user.id,

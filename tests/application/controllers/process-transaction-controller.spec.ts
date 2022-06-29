@@ -64,7 +64,7 @@ describe('ProcessTransactionController', () => {
         cardExpiringDate: '09/90',
         securityCode: 234
       },
-      locals: { userId: 1 }
+      locals: { user: { id: 1 } }
     }
 
     const result = await processTransactionController.handle(param)
