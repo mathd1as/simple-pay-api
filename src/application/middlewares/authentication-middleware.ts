@@ -8,8 +8,9 @@ export class AuthenticationMiddleware {
 
   async handle (params: HttpRequest): Promise<HttpResponse> {
     try {
-      const userId = await this.auth.validate({ token: params.authorization })
-      return ok({ userId })
+      const user = await this.auth.validate({ token: params.authorization })
+
+      return ok({ user })
     } catch (error) {
       return forbidden()
     }

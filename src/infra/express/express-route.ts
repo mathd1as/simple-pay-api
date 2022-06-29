@@ -2,19 +2,10 @@ import { RequestHandler } from 'express'
 
 export const adaptExpressRoute = (controller: any): RequestHandler => {
   return async (req: any, res: any) => {
-    let payloadController
-
-    if (req.headers.authorization !== undefined) {
-      payloadController = {
-        body: req.body,
-        token: req.headers.authorization,
-        locals: { userId: res.locals.userId }
-      }
-    } else {
-      payloadController = {
-        body: req.body,
-        locals: { userId: res.locals.userId }
-      }
+    const payloadController = {
+      body: req.body,
+      token: req.headers.authorization,
+      locals: res.locals
     }
 
     const httpResponse = await controller.handle({ ...payloadController })

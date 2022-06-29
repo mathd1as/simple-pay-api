@@ -13,7 +13,7 @@ type HttpRequest = {
     cardExpiringDate: string
     securityCode: number
   }
-  locals: { userId: number }
+  locals: any
 }
 
 export class ProcessTransactionController {
@@ -27,8 +27,9 @@ export class ProcessTransactionController {
       cardHolderName: httpRequest.body.cardHolderName,
       cardExpiringDate: httpRequest.body.cardExpiringDate,
       securityCode: httpRequest.body.securityCode,
-      userId: httpRequest.locals.userId
+      userId: httpRequest.locals.user.id
     }
+
     try {
       const result = await this.ProcessTransactionService.exec(transactionDto)
       return ok(result)

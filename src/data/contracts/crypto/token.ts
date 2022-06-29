@@ -16,5 +16,5 @@ export interface TokenValidator {
 
 export namespace TokenValidator {
   export type Input = { token: string }
-  export type Output = string
+  export type Output = any
 }

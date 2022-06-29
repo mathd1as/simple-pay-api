@@ -14,7 +14,7 @@ export class AuthenticationService implements Authentication {
     const { email } = params
 
     const user = await this.authenticationRepo.verifyUser({ email })
-    console.log({ user })
+
     const validPassord = await this.hashComparator.compare({ passwordHash: user.password, password: params.password })
 
     if (!validPassord) {
