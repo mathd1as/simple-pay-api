@@ -1,18 +1,11 @@
 import { ProcessTransactionService } from '@/data/services'
 import { HttpResponse } from '@/application/helpers/http'
 import { serverError, ok } from '@/application/helpers'
-import { PaymentMethod, TransactionDto } from '@/domain/models'
+import { TransactionDto } from '@/domain/models'
+import { ProcessTransactionDTO } from '../dtos/process-transaction-dto'
 
 type HttpRequest = {
-  body: {
-    value: number
-    description: string
-    paymentMethod: PaymentMethod
-    cardNumber: number
-    cardHolderName: string
-    cardExpiringDate: string
-    securityCode: number
-  }
+  body: ProcessTransactionDTO
   locals: any
 }
 

@@ -1,13 +1,11 @@
 import { AuthenticationService } from '@/data/services/authentication-service'
 import { AuthenticationError } from '@/domain/errors/authentication-error'
+import { AuthenticationDTO } from '@/application/dtos/authentication-dto'
 
 import { badRequest, ok, HttpResponse, serverError } from '../helpers'
 
 type HttpRequest = {
-  body: {
-    email: string
-    password: string
-  }
+  body: AuthenticationDTO
 }
 export class AuthenticationController {
   constructor (private readonly authenticationService: AuthenticationService) {}
