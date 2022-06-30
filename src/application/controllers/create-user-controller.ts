@@ -1,7 +1,8 @@
 import { HttpResponse } from '@/application/helpers/http'
-import { serverError, ok } from '@/application/helpers'
+import { serverError, ok, badRequest, unauthorized } from '@/application/helpers'
 import { CreateUserService } from '@/data/services/create-user-service'
 import { CreateUserDTO } from '@/application/dtos/create-user-dto'
+import { CreateUserError } from '@/domain/errors'
 
 type HttpRequest = {
   body: CreateUserDTO
@@ -12,7 +13,7 @@ export class CreateUserController {
   async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
       if (httpRequest.body.password !== httpRequest.body.confirmPassword) {
-        throw new Error('As senhas não coincidem')
+        return badRequest(new Error('As senhas não coincidem'))
       }
       const user = {
         name: httpRequest.body.name,
@@ -23,6 +24,9 @@ export class CreateUserController {
       return ok(result)
     } catch (error) {
       console.log(error)
+      if (error instanceof CreateUserError) {
+        return unauthorized()
+      }
       return serverError(error)
     }
   }

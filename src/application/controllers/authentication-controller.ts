@@ -14,7 +14,7 @@ export class AuthenticationController {
 
   async handle (params: HttpRequest): Promise<HttpResponse> {
     const { email, password } = params.body
-    if (email === '' || email === undefined) return badRequest(new Error('Username not found'))
+    if (email === '' || email === undefined) return badRequest(new Error('empty email field'))
     try {
       const result = await this.authenticationService.exec({ email, password })
       return ok(result)
