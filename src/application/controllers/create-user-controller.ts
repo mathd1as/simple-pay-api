@@ -1,5 +1,5 @@
 import { HttpResponse } from '@/application/helpers/http'
-import { serverError, ok, badRequest, unauthorized } from '@/application/helpers'
+import { serverError, ok, badRequest } from '@/application/helpers'
 import { CreateUserService } from '@/data/services/create-user-service'
 import { CreateUserDTO } from '@/application/dtos/create-user-dto'
 import { CreateUserError } from '@/domain/errors'
@@ -25,7 +25,7 @@ export class CreateUserController {
     } catch (error) {
       console.log(error)
       if (error instanceof CreateUserError) {
-        return unauthorized()
+        return badRequest(error)
       }
       return serverError(error)
     }
