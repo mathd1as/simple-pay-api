@@ -1,6 +1,6 @@
 import { PaymentMethod } from './payment-method'
 
-export type TransactionDto = {
+export type TransactionBaseData = {
   value: number
   description: string
   paymentMethod: PaymentMethod

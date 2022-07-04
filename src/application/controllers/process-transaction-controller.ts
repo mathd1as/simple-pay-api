@@ -1,7 +1,6 @@
 import { ProcessTransactionService } from '@/data/services'
 import { HttpResponse } from '@/application/helpers/http'
 import { serverError, ok } from '@/application/helpers'
-import { TransactionDto } from '@/domain/models'
 import { ProcessTransactionDTO } from '../dtos/process-transaction-dto'
 
 type HttpRequest = {
@@ -12,7 +11,7 @@ type HttpRequest = {
 export class ProcessTransactionController {
   constructor (private readonly ProcessTransactionService: ProcessTransactionService) {}
   async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
-    const transactionDto: TransactionDto = {
+    const transactionDto = {
       value: httpRequest.body.value,
       description: httpRequest.body.description,
       paymentMethod: httpRequest.body.paymentMethod,
