@@ -11,7 +11,7 @@ type HttpRequest = {
 export class ProcessTransactionController {
   constructor (private readonly ProcessTransactionService: ProcessTransactionService) {}
   async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
-    const transactionDto = {
+    const transactionBaseData = {
       value: httpRequest.body.value,
       description: httpRequest.body.description,
       paymentMethod: httpRequest.body.paymentMethod,
@@ -23,7 +23,7 @@ export class ProcessTransactionController {
     }
 
     try {
-      const result = await this.ProcessTransactionService.exec(transactionDto)
+      const result = await this.ProcessTransactionService.exec(transactionBaseData)
       return ok(result)
     } catch (error) {
       console.log(error)
