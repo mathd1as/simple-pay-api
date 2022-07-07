@@ -1,7 +1,7 @@
 import { ProcessTransactionService } from '@/data/services'
 import { HttpResponse } from '@/application/helpers/http'
 import { serverError, ok } from '@/application/helpers'
-import { ProcessTransactionDTO } from '../dtos/process-transaction-dto'
+import { ProcessTransactionDTO } from '@/application/dtos/process-transaction-dto'
 
 type HttpRequest = {
   body: ProcessTransactionDTO
