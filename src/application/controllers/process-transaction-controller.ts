@@ -2,15 +2,22 @@ import { ProcessTransactionService } from '@/data/services'
 import { HttpResponse } from '@/application/helpers/http'
 import { serverError, ok } from '@/application/helpers'
 import { ProcessTransactionDTO } from '@/application/dtos/process-transaction-dto'
+import { ValidationBuilder as Builder } from '@/application/validators/validation-builder'
+import { TransactionBaseData } from '@/domain/models'
+import { Validator } from '../validators/validator'
+import { Controller } from './controller'
 
 type HttpRequest = {
   body: ProcessTransactionDTO
   locals: any
 }
 
-export class ProcessTransactionController {
-  constructor (private readonly ProcessTransactionService: ProcessTransactionService) {}
-  async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
+export class ProcessTransactionController extends Controller {
+  constructor (private readonly ProcessTransactionService: ProcessTransactionService) {
+    super()
+  }
+
+  async perform (httpRequest: HttpRequest): Promise<HttpResponse> {
     const transactionBaseData = {
       value: httpRequest.body.value,
       description: httpRequest.body.description,
@@ -29,5 +36,11 @@ export class ProcessTransactionController {
       console.log(error)
       return serverError(error)
     }
+  }
+
+  override buildValidators (payload: TransactionBaseData): Validator[] {
+    return [
+      ...Builder.of({ value: payload.value, fieldName: 'value' }).required().build()
+    ]
   }
 }
