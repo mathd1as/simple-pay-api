@@ -1,6 +1,7 @@
+import { Controller } from '@/application/controllers/controller'
 import { RequestHandler } from 'express'
 
-export const adaptExpressRoute = (controller: any): RequestHandler => {
+export const adaptExpressRoute = (controller: Controller): RequestHandler => {
   return async (req: any, res: any) => {
     const payloadController = {
       body: req.body,

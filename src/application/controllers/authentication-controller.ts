@@ -3,14 +3,17 @@ import { AuthenticationError } from '@/domain/errors/authentication-error'
 import { AuthenticationDTO } from '@/application/dtos/authentication-dto'
 
 import { badRequest, ok, HttpResponse, serverError } from '../helpers'
+import { Controller } from './controller'
 
 type HttpRequest = {
   body: AuthenticationDTO
 }
-export class AuthenticationController {
-  constructor (private readonly authenticationService: AuthenticationService) {}
+export class AuthenticationController extends Controller {
+  constructor (private readonly authenticationService: AuthenticationService) {
+    super()
+  }
 
-  async handle (params: HttpRequest): Promise<HttpResponse> {
+  async perform (params: HttpRequest): Promise<HttpResponse> {
     const { email, password } = params.body
     if (email === '' || email === undefined) return badRequest(new Error('empty email field'))
     try {
