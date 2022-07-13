@@ -1,3 +1,4 @@
+import { IsString } from './is-string'
 import { RequiredField } from './required-field'
 import { Validator } from './validator'
 
@@ -14,6 +15,11 @@ export class ValidationBuilder {
 
   required (): ValidationBuilder {
     this.validators.push(new RequiredField(this.value, this.fieldName))
+    return this
+  }
+
+  isString (): ValidationBuilder {
+    this.validators.push(new IsString(this.value, this.fieldName))
     return this
   }
 

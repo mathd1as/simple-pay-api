@@ -7,3 +7,13 @@ export class RequiredFieldError extends Error {
     this.name = 'RequiredFieldError'
   }
 }
+
+export class IsStringError extends Error {
+  constructor (fieldName?: string) {
+    const message = fieldName === undefined
+      ? 'String required'
+      : `The field ${fieldName} must be string`
+    super(message)
+    this.name = 'IsStringError'
+  }
+}
