@@ -20,7 +20,7 @@ export abstract class Controller {
   }
 
   private validate (httpRequest: any): Error | undefined {
-    const validators = this.buildValidators(httpRequest)
+    const validators = this.buildValidators(httpRequest.body)
     return new ValidationComposite(validators).validate()
   }
 }

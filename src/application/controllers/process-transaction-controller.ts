@@ -41,13 +41,12 @@ export class ProcessTransactionController extends Controller {
   override buildValidators (payload: TransactionBaseData): Validator[] {
     return [
       ...Builder.of({ value: payload.value, fieldName: 'value' }).required().build(),
-      ...Builder.of({ value: payload.description, fieldName: 'description' }).required().build(),
-      ...Builder.of({ value: payload.paymentMethod, fieldName: 'paymentMethod' }).required().build(),
-      ...Builder.of({ value: payload.cardNumber, fieldName: 'cardNumber' }).required().build(),
-      ...Builder.of({ value: payload.cardHolderName, fieldName: 'cardHolderName' }).required().build(),
-      ...Builder.of({ value: payload.cardExpiringDate, fieldName: 'cardExpiringDate' }).required().build(),
-      ...Builder.of({ value: payload.securityCode, fieldName: 'securityCode' }).required().build(),
-      ...Builder.of({ value: payload.userId, fieldName: 'userId' }).required().build()
+      ...Builder.of({ value: payload.value, fieldName: 'description' }).required().build(),
+      ...Builder.of({ value: payload.value, fieldName: 'paymentMethod' }).required().build(),
+      ...Builder.of({ value: payload.value, fieldName: 'cardNumber' }).required().build(),
+      ...Builder.of({ value: payload.value, fieldName: 'cardHolderName' }).required().build(),
+      ...Builder.of({ value: payload.value, fieldName: 'securityCode' }).required().build(),
+      ...Builder.of({ value: payload.value, fieldName: 'cardExpiringDate' }).required().build()
     ]
   }
 }
