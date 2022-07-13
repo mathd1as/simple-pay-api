@@ -4,6 +4,8 @@ import { CreateUserService } from '@/data/services/create-user-service'
 import { CreateUserDTO } from '@/application/dtos/create-user-dto'
 import { CreateUserError } from '@/domain/errors'
 import { Controller } from './controller'
+import { ValidationBuilder as Builder } from '@/application/validators/validation-builder'
+import { Validator } from '../validators/validator'
 
 type HttpRequest = {
   body: CreateUserDTO
@@ -14,7 +16,7 @@ export class CreateUserController extends Controller {
     super()
   }
 
-  async perform (httpRequest: HttpRequest): Promise<HttpResponse> {
+  override async perform (httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
       if (httpRequest.body.password !== httpRequest.body.confirmPassword) {
         return badRequest(new Error('As senhas não coincidem'))
@@ -33,5 +35,14 @@ export class CreateUserController extends Controller {
       }
       return serverError(error)
     }
+  }
+
+  override buildValidators (payload: any): Validator[] {
+    return [
+      ...Builder.of({ value: payload.name, fieldName: 'name' }).required().build(),
+      ...Builder.of({ value: payload.email, fieldName: 'email' }).required().build(),
+      ...Builder.of({ value: payload.password, fieldName: 'password' }).required().build(),
+      ...Builder.of({ value: payload.confirmPassword, fieldName: 'confirmPassword' }).required().build()
+    ]
   }
 }
