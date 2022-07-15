@@ -2,6 +2,7 @@
 describe('ProcessTransactionService', () => {
   it('should ', () => {
     console.log('teste')
+    expect(1).toBe(1)
   })
   // it('Should be call savePayable and saveTransaction 1 time and return transactio id', async () => {
   //   const payload = {
