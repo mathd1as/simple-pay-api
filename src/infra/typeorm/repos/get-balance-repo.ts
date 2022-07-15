@@ -2,12 +2,11 @@ import { DataSource } from 'typeorm'
 import { PgTransaction } from '@/infra/typeorm/entities'
 import { GetBalanceRepo } from '@/data/contracts/repos/get-balance-repo'
 
-export class GetBalanceRepository {
+export class GetBalanceRepository implements GetBalanceRepo {
   constructor (private readonly dataSource: DataSource) {}
 
-  async getUserTransactions (params: GetBalanceRepo.Params): Promise<string> {
-    // const { id } = params
-    const id = 3
+  async getUserTransactions (params: GetBalanceRepo.Params): Promise<GetBalanceRepo.Result> {
+    const { id } = params
     const transaction = await this.dataSource
       .createQueryBuilder()
       .select('transaction')
@@ -15,8 +14,6 @@ export class GetBalanceRepository {
       .where('transaction.userId = :id', { id })
       .getMany()
 
-    console.log(transaction)
-    return 'teste'
-    // return transaction
+    return transaction
   }
 }
