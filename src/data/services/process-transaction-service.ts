@@ -1,5 +1,5 @@
 import { ProcessTransaction } from '@/domain/features'
-import { PaymentMethod, PayableStatus, Payable } from '@/domain/models'
+import { PayableStatus, Payable } from '@/domain/models'
 import { ProcessTransactionRepo } from '@/data/contracts/repos'
 import { ProcessTransactionError } from '@/domain/errors'
 
@@ -9,7 +9,7 @@ export class ProcessTransactionService implements ProcessTransaction {
   async exec (params: ProcessTransaction.Params): Promise<ProcessTransaction.Result> {
     let payableObject: Payable | undefined
 
-    if (params.paymentMethod === PaymentMethod.credit_card) {
+    if (params.paymentMethod === 'credit_card') {
       const value = params.value * 0.95
       const paymentDate = new Date()
       paymentDate.setDate(paymentDate.getDate() + 30)
