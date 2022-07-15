@@ -3,7 +3,9 @@ import { HttpResponse, ok, serverError } from '../helpers'
 import { Controller } from './controller'
 
 type HttpRequest = {
-  body: any
+  body: Object
+  token: string
+  locals: { user: {id: string}}
 }
 
 export class GetBalanceController extends Controller {
@@ -12,10 +14,10 @@ export class GetBalanceController extends Controller {
   }
 
   override async perform (params: HttpRequest): Promise<HttpResponse> {
+    const { user } = params.locals
     try {
-      const result = await this.getBalanceService.exec('teste')
-      console.log(result)
-      return ok({ teste: 'teste' })
+      const result = await this.getBalanceService.exec({ id: user.id })
+      return ok(result)
     } catch (error) {
       console.log(error)
       return serverError(error)

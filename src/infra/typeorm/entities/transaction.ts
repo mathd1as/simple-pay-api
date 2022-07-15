@@ -17,6 +17,9 @@ export class PgTransaction {
   @Column('varchar', { name: 'card_holder_name', length: 30, nullable: false })
   cardHolderName!: string
 
+  @Column('varchar', { name: 'security_code', length: 4, nullable: false })
+  securityCode!: string
+
   @Column({ name: 'validity', nullable: false })
   validity!: Date
 
