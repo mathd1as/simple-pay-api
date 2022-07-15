@@ -1,12 +1,11 @@
-import { PaymentMethod } from './payment-method'
 
 export type Transaction = {
   value: number
-  paymentMethod: PaymentMethod
+  paymentMethod: string
   cardNumber: number
   cardHolderName: string
   validity: Date
-  securityCode: number
+  securityCode: string
   payableId: number
   userId: number
 }
