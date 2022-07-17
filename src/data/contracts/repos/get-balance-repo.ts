@@ -5,6 +5,6 @@ export interface GetBalanceRepo {
 }
 
 export namespace GetBalanceRepo {
-  export type Params = { id: string }
-  export type Result = Transaction[]
+  export type Params = { id: number }
+  export type Result = Transaction[] | []
 }

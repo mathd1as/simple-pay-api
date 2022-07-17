@@ -3,7 +3,7 @@ export interface GetBalance {
 }
 
 export namespace GetBalance {
-  export type Params = { id: string }
+  export type Params = { id: number }
   export type Result = {
     available: number
     waitingFunds: number

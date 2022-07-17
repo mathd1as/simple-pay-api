@@ -1,5 +1,6 @@
 
 export type Transaction = {
+  id?: number
   value: number
   paymentMethod: string
   cardNumber: number
