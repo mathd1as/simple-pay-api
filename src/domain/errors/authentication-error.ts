@@ -1,6 +1,13 @@
-export class AuthenticationError extends Error {
+export class InvalidPasswordError extends Error {
   constructor () {
     super('Authentication failed, check your password')
-    this.name = 'AuthenticationError'
+    this.name = 'PasswordError'
+  }
+}
+
+export class UserNotFoundError extends Error {
+  constructor () {
+    super('Authentication failed, user not found')
+    this.name = 'UserNotFound'
   }
 }

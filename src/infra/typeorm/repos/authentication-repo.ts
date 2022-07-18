@@ -5,7 +5,7 @@ import { pgUser } from '@/infra/typeorm/entities'
 export class AuthenticationRepository implements AuthenticationRepo {
   constructor (private readonly dataSource: DataSource) {}
 
-  async verifyUser (params: AuthenticationRepo.Params): Promise<{password: string, id: number}> {
+  async verifyUser (params: AuthenticationRepo.Params): Promise<{password: string, id: number} | undefined> {
     const { email } = params
     const user = await this.dataSource
       .createQueryBuilder()
@@ -13,9 +13,7 @@ export class AuthenticationRepository implements AuthenticationRepo {
       .from(pgUser, 'user')
       .where('user.email = :email', { email })
       .getOne()
-    if (user === null) {
-      return { password: '', id: 0 }
-    }
+    if (user == null) return undefined
     return {
       password: user.password,
       id: user.id

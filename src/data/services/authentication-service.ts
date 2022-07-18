@@ -2,7 +2,7 @@ import { Authentication } from '@/domain/features/authentication'
 import { TokenGenerator } from '@/data/contracts/crypto/token'
 import { AuthenticationRepo } from '@/data/contracts/repos/authentication-repo'
 import { HashComparator } from '@/data/contracts/crypto/password'
-import { AuthenticationError } from '@/domain/errors/authentication-error'
+import { InvalidPasswordError, UserNotFoundError } from '@/domain/errors/authentication-error'
 
 export class AuthenticationService implements Authentication {
   constructor (
@@ -13,14 +13,10 @@ export class AuthenticationService implements Authentication {
 
   async exec (params: Authentication.Params): Promise<Authentication.Reuslt> {
     const { email } = params
-
     const user = await this.authenticationRepo.verifyUser({ email })
-
+    if (user === undefined) throw new UserNotFoundError()
     const validPassord = await this.hashComparator.compare({ passwordHash: user.password, password: params.password })
-
-    if (!validPassord) {
-      throw new AuthenticationError()
-    }
+    if (!validPassord) throw new InvalidPasswordError()
     const payload = {
       id: user.id,
       email: params.email

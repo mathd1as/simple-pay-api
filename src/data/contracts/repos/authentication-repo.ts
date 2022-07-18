@@ -7,5 +7,5 @@ export namespace AuthenticationRepo {
   export type Result = {
     password: string
     id: number
-  }
+  } | undefined
 }
