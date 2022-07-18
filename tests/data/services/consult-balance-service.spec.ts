@@ -1,9 +1,9 @@
-import { GetBalanceRepo } from '@/data/contracts/repos/get-balance-repo'
-import { GetBalanceService } from '@/data/services/get-balance-service'
+import { ConsultBalanceRepo } from '@/data/contracts/repos/consult-balance-repo'
+import { ConsultBalanceService } from '@/data/services/consult-balance-service'
 import { mock, MockProxy } from 'jest-mock-extended'
 
 describe('GetBalanceService', () => {
-  let getBalanceRepoMock: MockProxy<GetBalanceRepo>
+  let getBalanceRepoMock: MockProxy<ConsultBalanceRepo>
 
   beforeEach(() => {
     getBalanceRepoMock = mock()
@@ -63,7 +63,7 @@ describe('GetBalanceService', () => {
     const param = {
       id: 10
     }
-    const getBalanceService = new GetBalanceService(getBalanceRepoMock)
+    const getBalanceService = new ConsultBalanceService(getBalanceRepoMock)
     const result = await getBalanceService.exec(param)
     expect(expectedResult).toEqual(result)
     expect(getBalanceRepoMock.getUserTransactions).toHaveBeenCalledTimes(1)
@@ -77,7 +77,7 @@ describe('GetBalanceService', () => {
       id: 10
     }
     getBalanceRepoMock.getUserTransactions.mockResolvedValue([])
-    const getBalanceService = new GetBalanceService(getBalanceRepoMock)
+    const getBalanceService = new ConsultBalanceService(getBalanceRepoMock)
     const result = await getBalanceService.exec(param)
     expect(expectedResult).toEqual(result)
     expect(getBalanceRepoMock.getUserTransactions).toHaveBeenCalledTimes(1)

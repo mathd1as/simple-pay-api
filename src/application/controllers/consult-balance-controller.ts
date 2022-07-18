@@ -1,4 +1,4 @@
-import { GetBalanceService } from '@/data/services/get-balance-service'
+import { ConsultBalanceService } from '@/data/services/consult-balance-service'
 import { HttpResponse, ok, serverError } from '../helpers'
 import { Controller } from './controller'
 
@@ -8,15 +8,15 @@ type HttpRequest = {
   locals: { user: {id: string}}
 }
 
-export class GetBalanceController extends Controller {
-  constructor (private readonly getBalanceService: GetBalanceService) {
+export class ConsultBalanceController extends Controller {
+  constructor (private readonly consultBalanceService: ConsultBalanceService) {
     super()
   }
 
   override async perform (params: HttpRequest): Promise<HttpResponse> {
     const { user } = params.locals
     try {
-      const result = await this.getBalanceService.exec({ id: user.id })
+      const result = await this.consultBalanceService.exec({ id: Number(user.id) })
       return ok(result)
     } catch (error) {
       console.log(error)

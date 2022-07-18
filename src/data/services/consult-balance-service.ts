@@ -1,10 +1,10 @@
-import { GetBalance } from '@/domain/features/get-balance'
-import { GetBalanceRepo } from '@/data/contracts/repos/get-balance-repo'
+import { ConsultBalance } from '@/domain/features/consult-balance'
+import { ConsultBalanceRepo } from '@/data/contracts/repos/consult-balance-repo'
 
-export class GetBalanceService implements GetBalance {
-  constructor (private readonly getBalanceRepo: GetBalanceRepo) {}
+export class ConsultBalanceService implements ConsultBalance {
+  constructor (private readonly getBalanceRepo: ConsultBalanceRepo) {}
 
-  async exec (params: { id: number }): Promise<GetBalance.Result> {
+  async exec (params: { id: number }): Promise<ConsultBalance.Result> {
     const { id } = params
     const transactions = await this.getBalanceRepo.getUserTransactions({ id })
     const balance = {

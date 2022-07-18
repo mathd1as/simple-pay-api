@@ -1,11 +1,11 @@
 import { DataSource } from 'typeorm'
 import { PgTransaction } from '@/infra/typeorm/entities'
-import { GetBalanceRepo } from '@/data/contracts/repos/get-balance-repo'
+import { ConsultBalanceRepo } from '@/data/contracts/repos/consult-balance-repo'
 
-export class GetBalanceRepository implements GetBalanceRepo {
+export class ConsultBalanceRepository implements ConsultBalanceRepo {
   constructor (private readonly dataSource: DataSource) {}
 
-  async getUserTransactions (params: GetBalanceRepo.Params): Promise<GetBalanceRepo.Result> {
+  async getUserTransactions (params: ConsultBalanceRepo.Params): Promise<ConsultBalanceRepo.Result> {
     const { id } = params
     const transaction = await this.dataSource
       .createQueryBuilder()
