@@ -1,74 +1,61 @@
-// import { ProcessTransactionController } from '@/application/controllers/process-transaction-controller'
-// import { serverError } from '@/application/helpers'
-// import { ProcessTransactionService } from '@/data/services'
-// import { PaymentMethod } from '@/domain/models'
-// import { mock } from 'jest-mock-extended'
+import { Controller } from '@/application/controllers/controller'
+import { ProcessTransactionController } from '@/application/controllers/process-transaction-controller'
+import { serverError, ok } from '@/application/helpers'
+
+import { ProcessTransactionService } from '@/data/services'
+import { ProcessTransactionError } from '@/domain/errors'
+import { mock, MockProxy } from 'jest-mock-extended'
 
 describe('ProcessTransactionController', () => {
-  // it('Should return unauthorized if token is string empty', async () => {
-  //   const serviceMock = mock<ProcessTransactionService>()
-  //   const processTransactionController = new ProcessTransactionController(serviceMock)
+  let sut: ProcessTransactionController
+  let processTransactionService: MockProxy<ProcessTransactionService>
 
-  //   const param = {
-  //     body: {
-  //       value: 10,
-  //       description: 'test',
-  //       paymentMethod: PaymentMethod.credit_card,
-  //       cardNumber: 1032,
-  //       cardHolderName: 'teste teste teste',
-  //       cardExpiringDate: '09/90',
-  //       securityCode: 234
-  //     },
-  //     locals: { userId: 1 }
-  //   }
+  beforeEach(() => {
+    processTransactionService = mock()
+    processTransactionService.exec.mockResolvedValue({ id: 1 })
+    sut = new ProcessTransactionController(processTransactionService)
+  })
 
-  //   const result = await processTransactionController.handle(param)
+  it('should extend Controller', async () => {
+    expect(sut).toBeInstanceOf(Controller)
+  })
 
-  //   expect(result).toEqual(unauthorized())
-  // })
+  it('Should return ok if processTransactionService returns an object', async () => {
+    const param = {
+      body: {
+        value: 10,
+        description: 'test',
+        paymentMethod: 'credit_card',
+        cardNumber: 1032,
+        cardHolderName: 'teste teste teste',
+        cardExpiringDate: '09/90',
+        securityCode: 234
+      },
+      locals: { user: { id: 1 } }
+    }
 
-  // it('Should return ok after process transaction', async () => {
-  //   const serviceMock = mock<ProcessTransactionService>()
-  //   const processTransactionController = new ProcessTransactionController(serviceMock)
+    const result = await sut.handle(param)
+    console.log(result)
+    expect(ok({ id: 1 })).toEqual(result)
+  })
 
-  //   const param = {
-  //     body: {
-  //       value: 10,
-  //       description: 'test',
-  //       paymentMethod: PaymentMethod.credit_card,
-  //       cardNumber: 1032,
-  //       cardHolderName: 'teste teste teste',
-  //       cardExpiringDate: '09/90',
-  //       securityCode: 234
-  //     },
-  //     locals: { userId: 1 }
-  //   }
+  it('Should return serverError when exec throws', async () => {
+    processTransactionService.exec.mockRejectedValue(new ProcessTransactionError())
+    const param = {
+      body: {
+        value: 10,
+        description: 'test',
+        paymentMethod: 'credit_card',
+        cardNumber: 1032,
+        cardHolderName: 'teste teste teste',
+        cardExpiringDate: '09/90',
+        securityCode: 234
+      },
+      locals: { userId: 1 }
+    }
 
-  //   const result = await processTransactionController.handle(param)
+    const result = await sut.handle(param)
 
-  //   expect(result).toEqual({ data: undefined, statusCode: 200 })
-  // })
-
-  it('Should return serverError when throw process transaction', async () => {
-    // const serviceMock = mock<ProcessTransactionService>()
-    // serviceMock.exec.mockRejectedValue(new Error())
-    // const processTransactionController = new ProcessTransactionController(serviceMock)
-
-    // const param = {
-    //   body: {
-    //     value: 10,
-    //     description: 'test',
-    //     paymentMethod: PaymentMethod.credit_card,
-    //     cardNumber: 1032,
-    //     cardHolderName: 'teste teste teste',
-    //     cardExpiringDate: '09/90',
-    //     securityCode: 234
-    //   },
-    //   locals: { user: { id: 1 } }
-    // }
-
-    // const result = await processTransactionController.handle(param)
-
-    // expect(result).toEqual(serverError(new Error()))
+    expect(result).toEqual(serverError(new ProcessTransactionError()))
   })
 })

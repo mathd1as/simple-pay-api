@@ -7,5 +7,5 @@ export type ProcessTransactionDTO = {
   cardNumber: number
   cardHolderName: string
   cardExpiringDate: string
-  securityCode: number
+  securityCode: string
 }

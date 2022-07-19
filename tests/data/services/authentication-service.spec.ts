@@ -46,7 +46,7 @@ describe('AuthenticationService', () => {
     expect(hashComparator.compare).toHaveBeenCalledTimes(1)
   })
 
-  it('should ', async () => {
+  it('should return the accessToken by crypto generate', async () => {
     const params = {
       email: 'registred_user_email',
       password: 'correct_password'
