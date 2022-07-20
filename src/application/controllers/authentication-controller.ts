@@ -1,5 +1,5 @@
 import { AuthenticationService } from '@/data/services/authentication-service'
-import { AuthenticationError } from '@/domain/errors/authentication-error'
+import { InvalidPasswordError, UserNotFoundError } from '@/domain/errors/authentication-error'
 import { AuthenticationDTO } from '@/application/dtos/authentication-dto'
 import { ValidationBuilder as Builder } from '@/application/validators/validation-builder'
 
@@ -22,7 +22,10 @@ export class AuthenticationController extends Controller {
       return ok(result)
     } catch (error) {
       console.log(error)
-      if (error instanceof AuthenticationError) {
+      if (error instanceof InvalidPasswordError) {
+        return badRequest(error)
+      }
+      if (error instanceof UserNotFoundError) {
         return badRequest(error)
       }
       return serverError(error)
