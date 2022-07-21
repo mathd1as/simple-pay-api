@@ -35,7 +35,6 @@ describe('ProcessTransactionController', () => {
     }
 
     const result = await sut.handle(param)
-    console.log(result)
     expect(ok({ id: 1 })).toEqual(result)
   })
 
@@ -55,7 +54,6 @@ describe('ProcessTransactionController', () => {
     }
 
     const result = await sut.handle(param)
-
     expect(result).toEqual(serverError(new ProcessTransactionError()))
   })
 })
