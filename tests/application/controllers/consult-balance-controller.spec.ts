@@ -45,20 +45,4 @@ describe('ConsultoBalanceController', () => {
     const result = await sut.handle(param)
     expect(result).toEqual(serverError(new Error()))
   })
-
-  // it('should returns InvalidPasswordError when exec returns throws', async () => {
-  //   const param = {
-  //     body: {
-  //       email: 'not_registred_email',
-  //       password: 'password'
-  //     },
-  //     locals: { user: { id: 1 } }
-  //   }
-  //   authenticationService.exec.mockRejectedValue(new InvalidPasswordError())
-  //   const result = await sut.handle(param)
-  //   expect(result).toEqual({
-  //     data: new InvalidPasswordError(),
-  //     statusCode: 400
-  //   })
-  // })
 })
