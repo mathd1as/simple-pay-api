@@ -7,6 +7,7 @@ Está API é baseada no [desafio](https://github.com/pagarme/vagas/blob/master/d
 ``docker``
 ``docker-compose``
 ``node.js``
+``npm``
 
 ## Instalando o projeto
 1. ``git clone https://github.com/mathd1as/simple-pay-api.git``
