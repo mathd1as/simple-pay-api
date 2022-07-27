@@ -1,5 +1,5 @@
 import { AppDataSource } from '@/infra/typeorm/data-source'
-import { FetchUserTransactionsRepository } from '@/infra/typeorm/repos/fetch-user-transactions'
+import { FetchUserTransactionsRepository } from '@/infra/typeorm/repos/fetch-user-transactions-repo'
 
 export const makeFetchUserTransactionsRepo = (): FetchUserTransactionsRepository => {
   AppDataSource.initialize()

@@ -5,7 +5,7 @@ import { Controller } from './controller'
 type HttpRequest = {
   body: Object
   token: string
-  locals: { user: {id: string}}
+  locals: { user: {id: number }}
 }
 
 export class FetchUserTransactionsController extends Controller {
@@ -15,9 +15,8 @@ export class FetchUserTransactionsController extends Controller {
 
   async perform (httpRequest: HttpRequest): Promise<HttpResponse> {
     const { user } = httpRequest.locals
-    console.log({ user })
     try {
-      const result = await this.fetchUserTransactionsService.exec('teste')
+      const result = await this.fetchUserTransactionsService.exec({ id: user.id })
       return ok(result)
     } catch (error) {
       console.log(error)

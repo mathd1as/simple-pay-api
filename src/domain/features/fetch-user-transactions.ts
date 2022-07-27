@@ -1,8 +1,10 @@
+import { Transaction } from '../models'
+
 export interface FetchUserTransactions {
   exec: (params: FetchUserTransactions.Params) => Promise<FetchUserTransactions.Result>
 }
 
 export namespace FetchUserTransactions {
-  export type Params = string
-  export type Result = string
+  export type Params = { id: number }
+  export type Result = Transaction[] | []
 }

@@ -3,7 +3,7 @@ import { FetchUserTransactionsRepo } from '../contracts/repos/FetchUserTransacti
 
 export class FetchUserTransactionsService implements FetchUserTransactions {
   constructor (private readonly fethUserTransactionsRepo: FetchUserTransactionsRepo) {}
-  async exec (params: string): Promise<string> {
-    return 'test'
+  async exec (params: FetchUserTransactions.Params): Promise<FetchUserTransactions.Result> {
+    return await this.fethUserTransactionsRepo.perform(params)
   }
 }
