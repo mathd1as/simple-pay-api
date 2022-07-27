@@ -1,7 +1,7 @@
 # simple-pay-api
 O simple-pay-api é uma implementação simplificada de um Payment Service Provider (PSP). No intuito de aprender um pouco mais sobre como funcionam pagamentos no Brasil.
 
-Está API é baseada no desafio de back-end software engineer da @pagar.me e foi implementada utilizando clean architecture, TDD e desing patterns.
+Está API é baseada no [desafio](https://github.com/pagarme/vagas/blob/master/desafios/software-engineer-backend/README.md) de back-end software engineer da [@pagarme](https://github.com/pagarme) e foi implementada utilizando clean architecture, TDD e design patterns.
 
 ## Depêndencias
 1. ``docker``
