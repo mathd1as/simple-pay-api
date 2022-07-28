@@ -4,7 +4,7 @@ import { ConsultBalanceRepo } from '@/data/contracts/repos/consult-balance-repo'
 export class ConsultBalanceService implements ConsultBalance {
   constructor (private readonly getBalanceRepo: ConsultBalanceRepo) {}
 
-  async exec (params: { id: number }): Promise<ConsultBalance.Result> {
+  async exec (params: ConsultBalance.Params): Promise<ConsultBalance.Result> {
     const { id } = params
     const transactions = await this.getBalanceRepo.getUserTransactions({ id })
     const balance = {

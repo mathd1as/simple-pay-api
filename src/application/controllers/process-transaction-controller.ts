@@ -3,13 +3,13 @@ import { HttpResponse } from '@/application/helpers/http'
 import { serverError, ok } from '@/application/helpers'
 import { ProcessTransactionDTO } from '@/application/dtos/process-transaction-dto'
 import { ValidationBuilder as Builder } from '@/application/validators/validation-builder'
-import { TransactionBaseData } from '@/domain/models'
 import { Validator } from '../validators/validator'
 import { Controller } from './controller'
+import { ProcessTransaction } from '@/domain/features'
 
 type HttpRequest = {
   body: ProcessTransactionDTO
-  locals: { user: {id: number }}
+  locals: { user: { id: number }}
 }
 
 export class ProcessTransactionController extends Controller {
@@ -38,7 +38,7 @@ export class ProcessTransactionController extends Controller {
     }
   }
 
-  override buildValidators (payload: TransactionBaseData): Validator[] {
+  override buildValidators (payload: ProcessTransaction.Params): Validator[] {
     return [
       ...Builder.of({ value: payload.value, fieldName: 'value' }).required().build(),
       ...Builder.of({ value: payload.description, fieldName: 'description' }).required().isString().build(),

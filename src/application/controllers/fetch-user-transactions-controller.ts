@@ -5,7 +5,7 @@ import { Controller } from './controller'
 type HttpRequest = {
   body: Object
   token: string
-  locals: { user: {id: number }}
+  locals: { user: { id: number }}
 }
 
 export class FetchUserTransactionsController extends Controller {
