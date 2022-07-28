@@ -9,11 +9,11 @@ import { Controller } from './controller'
 
 type HttpRequest = {
   body: ProcessTransactionDTO
-  locals: any
+  locals: { user: {id: number }}
 }
 
 export class ProcessTransactionController extends Controller {
-  constructor (private readonly ProcessTransactionService: ProcessTransactionService) {
+  constructor (private readonly processTransactionService: ProcessTransactionService) {
     super()
   }
 
@@ -30,7 +30,7 @@ export class ProcessTransactionController extends Controller {
     }
 
     try {
-      const result = await this.ProcessTransactionService.exec(transactionBaseData)
+      const result = await this.processTransactionService.exec(transactionBaseData)
       return ok(result)
     } catch (error) {
       console.log(error)
