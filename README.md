@@ -4,10 +4,10 @@ O simple-pay-api é uma implementação simplificada de um Payment Service Provi
 Esta API é baseada no [desafio](https://github.com/pagarme/vagas/blob/master/desafios/software-engineer-backend/README.md) de back-end software engineer da [@pagarme](https://github.com/pagarme) e foi implementada utilizando clean architecture, TDD e design patterns. :man_technologist:
 
 ## Depêndencias
-``docker``
-``docker-compose``
-``node.js``
-``npm``
+[``docker``](https://www.docker.com/)
+[``docker-compose``](https://docs.docker.com/compose/)
+[``node.js``](https://nodejs.org/en/)
+[``npm``](https://www.npmjs.com/)
 
 ## Instalando o projeto
 1. ``git clone https://github.com/mathd1as/simple-pay-api.git``
