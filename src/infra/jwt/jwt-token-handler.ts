@@ -1,4 +1,4 @@
-import { TokenGenerator, TokenValidator } from '@/data/contracts/crypto/token'
+import { TokenGenerator, TokenValidator } from '@/domain/contracts/crypto/token'
 
 import { sign, verify, JwtPayload } from 'jsonwebtoken'
 

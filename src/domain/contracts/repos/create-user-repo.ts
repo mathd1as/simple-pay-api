@@ -1,4 +1,4 @@
-import { User } from '@/domain/models/user'
+import { User } from '@/domain/entities/models/user'
 
 export interface CreateUserRepo {
   perform: (param: CreateUserRepo.Params) => Promise<CreateUserRepo.Result>

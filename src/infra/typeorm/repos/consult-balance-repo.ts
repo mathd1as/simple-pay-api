@@ -1,6 +1,6 @@
 import { DataSource } from 'typeorm'
 import { PgTransaction } from '@/infra/typeorm/entities'
-import { ConsultBalanceRepo } from '@/data/contracts/repos/consult-balance-repo'
+import { ConsultBalanceRepo } from '@/domain/contracts/repos/consult-balance-repo'
 
 export class ConsultBalanceRepository implements ConsultBalanceRepo {
   constructor (private readonly dataSource: DataSource) {}

@@ -1,4 +1,4 @@
-import { TokenValidator } from '@/data/contracts/crypto/token'
+import { TokenValidator } from '@/domain/contracts/crypto/token'
 import { HttpResponse, ok, forbidden } from '@/application/helpers'
 
 type HttpRequest = { authorization: string }

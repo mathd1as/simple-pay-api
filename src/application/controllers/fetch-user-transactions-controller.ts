@@ -1,4 +1,4 @@
-import { FetchUserTransactionsService } from '@/data/services/fetch-user-transactions-service'
+import { FetchUserTransactionsService } from '@/domain/services/fetch-user-transactions-service'
 import { HttpResponse, ok, serverError } from '../helpers'
 import { Controller } from './controller'
 

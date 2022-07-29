@@ -1,7 +1,7 @@
-import { ProcessTransaction } from '@/domain/features'
-import { PayableStatus, Payable } from '@/domain/models'
-import { ProcessTransactionRepo } from '@/data/contracts/repos'
-import { ProcessTransactionError } from '@/domain/errors'
+import { ProcessTransaction } from '@/domain/use-cases'
+import { PayableStatus, Payable } from '@/domain/entities/models'
+import { ProcessTransactionRepo } from '@/domain/contracts/repos'
+import { ProcessTransactionError } from '@/domain/entities/errors'
 
 export class ProcessTransactionService implements ProcessTransaction {
   constructor (private readonly processTransactionRepo: ProcessTransactionRepo) {}

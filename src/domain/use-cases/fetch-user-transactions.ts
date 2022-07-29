@@ -1,4 +1,4 @@
-import { Transaction } from '../models'
+import { Transaction } from '../entities/models'
 
 export interface FetchUserTransactions {
   exec: (params: FetchUserTransactions.Params) => Promise<FetchUserTransactions.Result>

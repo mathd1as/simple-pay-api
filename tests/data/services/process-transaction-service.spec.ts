@@ -1,5 +1,5 @@
-import { ProcessTransactionService } from '@/data/services'
-import { ProcessTransactionError } from '@/domain/errors'
+import { ProcessTransactionService } from '@/domain/services'
+import { ProcessTransactionError } from '@/domain/entities/errors'
 
 describe('ProcessTransactionService', () => {
   it('Should be call savePayable and saveTransaction 1 time and return transactio id', async () => {

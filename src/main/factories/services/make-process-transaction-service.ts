@@ -1,4 +1,4 @@
-import { ProcessTransactionService } from '@/data/services'
+import { ProcessTransactionService } from '@/domain/services'
 import { makeProcessTransactionRepo } from '../repositories/make-process-transaction-repo'
 
 export const makeProcessTransactionService = (): ProcessTransactionService => {

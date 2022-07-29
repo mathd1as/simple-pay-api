@@ -1,4 +1,4 @@
-import { AuthenticationRepo } from '@/data/contracts/repos/authentication-repo'
+import { AuthenticationRepo } from '@/domain/contracts/repos/authentication-repo'
 import { DataSource } from 'typeorm'
 import { pgUser } from '@/infra/typeorm/entities'
 

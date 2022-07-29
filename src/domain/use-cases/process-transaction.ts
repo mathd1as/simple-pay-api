@@ -1,4 +1,4 @@
-import { ProcessTransactionError } from '@/domain/errors'
+import { ProcessTransactionError } from '@/domain/entities/errors'
 
 export interface ProcessTransaction {
   exec: (params: ProcessTransaction.Params) => Promise<ProcessTransaction.Result>

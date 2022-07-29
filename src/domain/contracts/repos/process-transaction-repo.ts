@@ -1,4 +1,4 @@
-import { Payable, Transaction } from '@/domain/models'
+import { Payable, Transaction } from '@/domain/entities/models'
 
 export interface ProcessTransactionRepo {
   savePayable: (params: ProcessTransactionRepo.PayableParams) => Promise<ProcessTransactionRepo.PayableResult>

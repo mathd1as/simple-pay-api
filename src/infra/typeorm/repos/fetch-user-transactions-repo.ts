@@ -1,4 +1,4 @@
-import { FetchUserTransactionsRepo } from '@/data/contracts/repos/FetchUserTransactionsRepo'
+import { FetchUserTransactionsRepo } from '@/domain/contracts/repos/FetchUserTransactionsRepo'
 import { DataSource } from 'typeorm'
 import { PgTransaction } from '../entities'
 

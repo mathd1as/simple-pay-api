@@ -1,11 +1,11 @@
-import { ProcessTransactionService } from '@/data/services'
+import { ProcessTransactionService } from '@/domain/services'
 import { HttpResponse } from '@/application/helpers/http'
 import { serverError, ok } from '@/application/helpers'
 import { ProcessTransactionDTO } from '@/application/dtos/process-transaction-dto'
 import { ValidationBuilder as Builder } from '@/application/validators/validation-builder'
 import { Validator } from '../validators/validator'
 import { Controller } from './controller'
-import { ProcessTransaction } from '@/domain/features'
+import { ProcessTransaction } from '@/domain/use-cases'
 
 type HttpRequest = {
   body: ProcessTransactionDTO

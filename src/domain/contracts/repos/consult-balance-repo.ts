@@ -1,4 +1,4 @@
-import { Transaction } from '@/domain/models/transaction'
+import { Transaction } from '@/domain/entities/models/transaction'
 
 export interface ConsultBalanceRepo {
   getUserTransactions: (params: ConsultBalanceRepo.Params) => Promise<ConsultBalanceRepo.Result>

@@ -1,8 +1,8 @@
-import { HashComparator } from '@/data/contracts/crypto/password'
-import { TokenGenerator } from '@/data/contracts/crypto/token'
-import { AuthenticationRepo } from '@/data/contracts/repos/authentication-repo'
-import { AuthenticationService } from '@/data/services'
-import { InvalidPasswordError, UserNotFoundError } from '@/domain/errors'
+import { HashComparator } from '@/domain/contracts/crypto/password'
+import { TokenGenerator } from '@/domain/contracts/crypto/token'
+import { AuthenticationRepo } from '@/domain/contracts/repos/authentication-repo'
+import { AuthenticationService } from '@/domain/services'
+import { InvalidPasswordError, UserNotFoundError } from '@/domain/entities/errors'
 import { mock, MockProxy } from 'jest-mock-extended'
 
 describe('AuthenticationService', () => {

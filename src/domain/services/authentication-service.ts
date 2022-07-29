@@ -1,8 +1,8 @@
-import { Authentication } from '@/domain/features/authentication'
-import { TokenGenerator } from '@/data/contracts/crypto/token'
-import { AuthenticationRepo } from '@/data/contracts/repos/authentication-repo'
-import { HashComparator } from '@/data/contracts/crypto/password'
-import { InvalidPasswordError, UserNotFoundError } from '@/domain/errors/authentication-error'
+import { Authentication } from '@/domain/use-cases/authentication'
+import { TokenGenerator } from '@/domain/contracts/crypto/token'
+import { AuthenticationRepo } from '@/domain/contracts/repos/authentication-repo'
+import { HashComparator } from '@/domain/contracts/crypto/password'
+import { InvalidPasswordError, UserNotFoundError } from '@/domain/entities/errors/authentication-error'
 
 export class AuthenticationService implements Authentication {
   constructor (

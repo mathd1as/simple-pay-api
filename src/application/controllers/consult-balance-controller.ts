@@ -1,4 +1,4 @@
-import { ConsultBalanceService } from '@/data/services/consult-balance-service'
+import { ConsultBalanceService } from '@/domain/services/consult-balance-service'
 import { HttpResponse, ok, serverError } from '../helpers'
 import { Controller } from './controller'
 

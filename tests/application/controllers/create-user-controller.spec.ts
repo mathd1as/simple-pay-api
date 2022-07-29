@@ -1,8 +1,8 @@
 import { Controller } from '@/application/controllers/controller'
 import { CreateUserController } from '@/application/controllers/create-user-controller'
 import { badRequest, ok, serverError } from '@/application/helpers'
-import { CreateUserService } from '@/data/services/create-user-service'
-import { CreateUserError } from '@/domain/errors'
+import { CreateUserService } from '@/domain/services/create-user-service'
+import { CreateUserError } from '@/domain/entities/errors'
 import { mock, MockProxy } from 'jest-mock-extended'
 
 describe('CreateUserController', () => {

@@ -1,4 +1,4 @@
-import { PayableStatus } from '@/domain/models/payable-status'
+import { PayableStatus } from '@/domain/entities/models/payable-status'
 
 export type Payable = {
   value: number

@@ -2,8 +2,8 @@ import { Controller } from '@/application/controllers/controller'
 import { ProcessTransactionController } from '@/application/controllers/process-transaction-controller'
 import { serverError, ok } from '@/application/helpers'
 
-import { ProcessTransactionService } from '@/data/services'
-import { ProcessTransactionError } from '@/domain/errors'
+import { ProcessTransactionService } from '@/domain/services'
+import { ProcessTransactionError } from '@/domain/entities/errors'
 import { mock, MockProxy } from 'jest-mock-extended'
 
 describe('ProcessTransactionController', () => {

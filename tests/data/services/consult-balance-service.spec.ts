@@ -1,5 +1,5 @@
-import { ConsultBalanceRepo } from '@/data/contracts/repos/consult-balance-repo'
-import { ConsultBalanceService } from '@/data/services/consult-balance-service'
+import { ConsultBalanceRepo } from '@/domain/contracts/repos/consult-balance-repo'
+import { ConsultBalanceService } from '@/domain/services/consult-balance-service'
 import { mock, MockProxy } from 'jest-mock-extended'
 
 describe('GetBalanceService', () => {

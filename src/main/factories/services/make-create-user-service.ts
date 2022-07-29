@@ -1,4 +1,4 @@
-import { CreateUserService } from '@/data/services/create-user-service'
+import { CreateUserService } from '@/domain/services/create-user-service'
 import { makeCreateUserRepo } from '../repositories/make-create-user-repo'
 import { Bcrypto } from '@/infra/bcrypt/bcrypto'
 

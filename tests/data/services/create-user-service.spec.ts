@@ -1,8 +1,8 @@
-import { CreateUserRepo } from '@/data/contracts/repos/create-user-repo'
-import { CreateUserService } from '@/data/services/create-user-service'
-import { HashGenerator } from '@/data/contracts/crypto/password'
+import { CreateUserRepo } from '@/domain/contracts/repos/create-user-repo'
+import { CreateUserService } from '@/domain/services/create-user-service'
+import { HashGenerator } from '@/domain/contracts/crypto/password'
 import { mock, MockProxy } from 'jest-mock-extended'
-import { CreateUserError } from '@/domain/errors'
+import { CreateUserError } from '@/domain/entities/errors'
 
 describe('CreateUserService', () => {
   const newUser = { id: 1 }

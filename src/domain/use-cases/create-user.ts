@@ -1,5 +1,5 @@
 import { HttpResponse } from '@/application/helpers'
-import { User } from '@/domain/models/user'
+import { User } from '@/domain/entities/models/user'
 
 export interface CreateUser {
   exec: (params: CreateUser.Params) => Promise<CreateUser.Result>

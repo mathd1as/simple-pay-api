@@ -1,4 +1,4 @@
-import { Transaction } from '@/domain/models'
+import { Transaction } from '@/domain/entities/models'
 
 export interface FetchUserTransactionsRepo {
   perform: (params: FetchUserTransactionsRepo.Params) => Promise<FetchUserTransactionsRepo.Result>

@@ -1,4 +1,4 @@
-import { ProcessTransactionRepo } from '@/data/contracts/repos'
+import { ProcessTransactionRepo } from '@/domain/contracts/repos'
 import { DataSource } from 'typeorm'
 import { PgPayable, PgTransaction } from '@/infra/typeorm/entities'
 

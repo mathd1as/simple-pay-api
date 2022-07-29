@@ -1,7 +1,7 @@
 import { ConsultBalanceController } from '@/application/controllers/consult-balance-controller'
 import { Controller } from '@/application/controllers/controller'
 import { ok, serverError } from '@/application/helpers'
-import { ConsultBalanceService } from '@/data/services/consult-balance-service'
+import { ConsultBalanceService } from '@/domain/services/consult-balance-service'
 // import { InvalidPasswordError, UserNotFoundError } from '@/domain/errors'
 import { mock, MockProxy } from 'jest-mock-extended'
 

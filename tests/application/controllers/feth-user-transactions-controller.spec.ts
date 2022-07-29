@@ -1,6 +1,6 @@
 import { Controller } from '@/application/controllers/controller'
 import { FetchUserTransactionsController } from '@/application/controllers/fetch-user-transactions-controller'
-import { FetchUserTransactionsService } from '@/data/services/fetch-user-transactions-service'
+import { FetchUserTransactionsService } from '@/domain/services/fetch-user-transactions-service'
 import { mock, MockProxy } from 'jest-mock-extended'
 
 describe('FethUserTransactionsController', () => {

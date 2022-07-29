@@ -1,5 +1,5 @@
-import { AuthenticationService } from '@/data/services/authentication-service'
-import { InvalidPasswordError, UserNotFoundError } from '@/domain/errors/authentication-error'
+import { AuthenticationService } from '@/domain/services/authentication-service'
+import { InvalidPasswordError, UserNotFoundError } from '@/domain/entities/errors/authentication-error'
 import { AuthenticationDTO } from '@/application/dtos/authentication-dto'
 import { ValidationBuilder as Builder } from '@/application/validators/validation-builder'
 

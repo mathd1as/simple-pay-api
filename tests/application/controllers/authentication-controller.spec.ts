@@ -1,8 +1,8 @@
 import { AuthenticationController } from '@/application/controllers/authentication-controller'
 import { Controller } from '@/application/controllers/controller'
 import { ok } from '@/application/helpers'
-import { AuthenticationService } from '@/data/services'
-import { InvalidPasswordError, UserNotFoundError } from '@/domain/errors'
+import { AuthenticationService } from '@/domain/services'
+import { InvalidPasswordError, UserNotFoundError } from '@/domain/entities/errors'
 import { mock, MockProxy } from 'jest-mock-extended'
 
 describe('AuthenticationController', () => {

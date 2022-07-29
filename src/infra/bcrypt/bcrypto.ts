@@ -1,4 +1,4 @@
-import { HashComparator, HashGenerator } from '@/data/contracts/crypto/password'
+import { HashComparator, HashGenerator } from '@/domain/contracts/crypto/password'
 import bcrypt from 'bcrypt'
 
 export class Bcrypto implements HashGenerator, HashComparator {

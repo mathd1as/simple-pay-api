@@ -1,5 +1,5 @@
-import { CreateUserRepo } from '@/data/contracts/repos/create-user-repo'
-import { User } from '@/domain/models/user'
+import { CreateUserRepo } from '@/domain/contracts/repos/create-user-repo'
+import { User } from '@/domain/entities/models/user'
 import { pgUser } from '@/infra/typeorm/entities'
 
 import { DataSource } from 'typeorm'

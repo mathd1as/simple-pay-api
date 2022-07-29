@@ -1,7 +1,7 @@
-import { CreateUser } from '@/domain/features/create-user'
-import { CreateUserRepo } from '@/data/contracts/repos/create-user-repo'
-import { HashGenerator } from '@/data/contracts/crypto/password'
-import { CreateUserError } from '@/domain/errors'
+import { CreateUser } from '@/domain/use-cases/create-user'
+import { CreateUserRepo } from '@/domain/contracts/repos/create-user-repo'
+import { HashGenerator } from '@/domain/contracts/crypto/password'
+import { CreateUserError } from '@/domain/entities/errors'
 
 export class CreateUserService implements CreateUser {
   constructor (

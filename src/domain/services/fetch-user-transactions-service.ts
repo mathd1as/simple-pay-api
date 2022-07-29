@@ -1,4 +1,4 @@
-import { FetchUserTransactions } from '@/domain/features/fetch-user-transactions'
+import { FetchUserTransactions } from '@/domain/use-cases/fetch-user-transactions'
 import { FetchUserTransactionsRepo } from '../contracts/repos/FetchUserTransactionsRepo'
 
 export class FetchUserTransactionsService implements FetchUserTransactions {

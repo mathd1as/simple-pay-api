@@ -1,4 +1,4 @@
-import { PaymentMethod } from '@/domain/models'
+import { PaymentMethod } from '@/domain/entities/models'
 
 export type ProcessTransactionDTO = {
   value: number

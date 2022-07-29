@@ -1,5 +1,5 @@
-import { ConsultBalance } from '@/domain/features/consult-balance'
-import { ConsultBalanceRepo } from '@/data/contracts/repos/consult-balance-repo'
+import { ConsultBalance } from '@/domain/use-cases/consult-balance'
+import { ConsultBalanceRepo } from '@/domain/contracts/repos/consult-balance-repo'
 
 export class ConsultBalanceService implements ConsultBalance {
   constructor (private readonly getBalanceRepo: ConsultBalanceRepo) {}

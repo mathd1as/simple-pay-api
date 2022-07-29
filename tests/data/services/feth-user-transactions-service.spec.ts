@@ -1,5 +1,5 @@
-import { FetchUserTransactionsRepo } from '@/data/contracts/repos/FetchUserTransactionsRepo'
-import { FetchUserTransactionsService } from '@/data/services/fetch-user-transactions-service'
+import { FetchUserTransactionsRepo } from '@/domain/contracts/repos/FetchUserTransactionsRepo'
+import { FetchUserTransactionsService } from '@/domain/services/fetch-user-transactions-service'
 import { mock, MockProxy } from 'jest-mock-extended'
 
 describe('FethUserTransactionsService', () => {
