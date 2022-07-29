@@ -5,7 +5,7 @@ import { ProcessTransactionDTO } from '@/application/dtos/process-transaction-dt
 import { ValidationBuilder as Builder } from '@/application/validators/validation-builder'
 import { Validator } from '../validators/validator'
 import { Controller } from './controller'
-import { ProcessTransaction } from '@/domain/use-cases'
+import { ProcessTransaction } from '@/domain/contracts/use-cases'
 
 type HttpRequest = {
   body: ProcessTransactionDTO

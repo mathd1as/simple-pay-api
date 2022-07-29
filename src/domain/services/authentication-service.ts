@@ -1,4 +1,4 @@
-import { Authentication } from '@/domain/use-cases/authentication'
+import { Authentication } from '@/domain/contracts/use-cases/authentication'
 import { TokenGenerator } from '@/domain/contracts/crypto/token'
 import { AuthenticationRepo } from '@/domain/contracts/repos/authentication-repo'
 import { HashComparator } from '@/domain/contracts/crypto/password'

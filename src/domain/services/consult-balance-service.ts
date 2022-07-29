@@ -1,4 +1,4 @@
-import { ConsultBalance } from '@/domain/use-cases/consult-balance'
+import { ConsultBalance } from '@/domain/contracts/use-cases/consult-balance'
 import { ConsultBalanceRepo } from '@/domain/contracts/repos/consult-balance-repo'
 
 export class ConsultBalanceService implements ConsultBalance {

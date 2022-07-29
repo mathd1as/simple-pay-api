@@ -1,4 +1,4 @@
-import { ProcessTransaction } from '@/domain/use-cases'
+import { ProcessTransaction } from '@/domain/contracts/use-cases'
 import { PayableStatus, Payable } from '@/domain/entities/models'
 import { ProcessTransactionRepo } from '@/domain/contracts/repos'
 import { ProcessTransactionError } from '@/domain/entities/errors'

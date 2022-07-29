@@ -1,4 +1,4 @@
-import { CreateUser } from '@/domain/use-cases/create-user'
+import { CreateUser } from '@/domain/contracts/use-cases/create-user'
 import { CreateUserRepo } from '@/domain/contracts/repos/create-user-repo'
 import { HashGenerator } from '@/domain/contracts/crypto/password'
 import { CreateUserError } from '@/domain/entities/errors'
