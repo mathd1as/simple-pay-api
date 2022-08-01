@@ -1,7 +1,7 @@
-import { adaptExpressRoute } from '@/infra/express/express-route'
+import { adaptExpressRoute } from '@/main/adapters/express-route'
 import { makeConsultBalanceController } from '../factories/controllers/make-consult-balance-controller'
 import { makeAuthenticationMiddleware } from '../factories/middlewares/make-authentication-middleware'
-import { adaptExpressMiddleware } from '@/infra/express/express-middleware'
+import { adaptExpressMiddleware } from '@/main/adapters/express-middleware'
 
 import { Router } from 'express'
 
