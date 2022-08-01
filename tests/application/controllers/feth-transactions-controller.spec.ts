@@ -1,11 +1,11 @@
 import { Controller } from '@/application/controllers/controller'
-import { FetchUserTransactionsController } from '@/application/controllers/fetch-user-transactions-controller'
-import { FetchUserTransactionsService } from '@/domain/services/fetch-user-transactions-service'
+import { FetchTransactionsController } from '@/application/controllers/fetch-transactions-controller'
+import { FetchTransactionsService } from '@/domain/services/fetch-transactions-service'
 import { mock, MockProxy } from 'jest-mock-extended'
 
 describe('FethUserTransactionsController', () => {
-  let sut: FetchUserTransactionsController
-  let fetchUserTransactionsService: MockProxy<FetchUserTransactionsService>
+  let sut: FetchTransactionsController
+  let fetchTransactionsService: MockProxy<FetchTransactionsService>
   const paramsMock = [
     {
       id: 5,
@@ -32,9 +32,9 @@ describe('FethUserTransactionsController', () => {
   ]
 
   beforeEach(() => {
-    fetchUserTransactionsService = mock()
-    fetchUserTransactionsService.exec.mockResolvedValue(paramsMock)
-    sut = new FetchUserTransactionsController(fetchUserTransactionsService)
+    fetchTransactionsService = mock()
+    fetchTransactionsService.exec.mockResolvedValue(paramsMock)
+    sut = new FetchTransactionsController(fetchTransactionsService)
   })
   it('should extend Controller', async () => {
     expect(sut).toBeInstanceOf(Controller)

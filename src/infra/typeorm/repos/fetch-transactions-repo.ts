@@ -1,10 +1,10 @@
-import { FetchUserTransactionsRepo } from '@/domain/contracts/repos/FetchUserTransactionsRepo'
+import { FetchTransactionsRepo } from '@/domain/contracts/repos/FetchTransactionsRepo'
 import { DataSource } from 'typeorm'
 import { PgTransaction } from '../entities'
 
-export class FetchUserTransactionsRepository implements FetchUserTransactionsRepo {
+export class FetchTransactionsRepository implements FetchTransactionsRepo {
   constructor (private readonly dataSource: DataSource) {}
-  async perform (params: FetchUserTransactionsRepo.Params): Promise<FetchUserTransactionsRepo.Result> {
+  async perform (params: FetchTransactionsRepo.Params): Promise<FetchTransactionsRepo.Result> {
     const { id } = params
     const transactions = await this.dataSource
       .createQueryBuilder()

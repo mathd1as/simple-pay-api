@@ -1,9 +1,9 @@
-import { FetchUserTransactionsRepo } from '@/domain/contracts/repos/FetchUserTransactionsRepo'
-import { FetchUserTransactionsService } from '@/domain/services/fetch-user-transactions-service'
+import { FetchTransactionsRepo } from '@/domain/contracts/repos/FetchTransactionsRepo'
+import { FetchTransactionsService } from '@/domain/services/fetch-transactions-service'
 import { mock, MockProxy } from 'jest-mock-extended'
 
 describe('FethUserTransactionsService', () => {
-  let fethUserTransactionsRepo: MockProxy<FetchUserTransactionsRepo>
+  let fethUserTransactionsRepo: MockProxy<FetchTransactionsRepo>
   const paramsMock = [
     {
       id: 5,
@@ -34,8 +34,8 @@ describe('FethUserTransactionsService', () => {
     fethUserTransactionsRepo.perform.mockResolvedValue(paramsMock)
   })
   it('should return the data from repository and called one time', async () => {
-    const fetchUserTransactionsService = new FetchUserTransactionsService(fethUserTransactionsRepo)
-    const result = await fetchUserTransactionsService.exec({ id: 1 })
+    const fetchTransactionsService = new FetchTransactionsService(fethUserTransactionsRepo)
+    const result = await fetchTransactionsService.exec({ id: 1 })
     console.log(result)
     expect(result).toBe(paramsMock)
     expect(fethUserTransactionsRepo.perform).toBeCalledTimes(1)

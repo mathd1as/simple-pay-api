@@ -1,4 +1,4 @@
-import { FetchUserTransactionsService } from '@/domain/services/fetch-user-transactions-service'
+import { FetchTransactionsService } from '@/domain/services/fetch-transactions-service'
 import { HttpResponse, ok, serverError } from '../helpers'
 import { Controller } from './controller'
 
@@ -8,15 +8,15 @@ type HttpRequest = {
   locals: { user: { id: number }}
 }
 
-export class FetchUserTransactionsController extends Controller {
-  constructor (private readonly fetchUserTransactionsService: FetchUserTransactionsService) {
+export class FetchTransactionsController extends Controller {
+  constructor (private readonly fetchTransactionsService: FetchTransactionsService) {
     super()
   }
 
   async perform (httpRequest: HttpRequest): Promise<HttpResponse> {
     const { user } = httpRequest.locals
     try {
-      const result = await this.fetchUserTransactionsService.exec({ id: user.id })
+      const result = await this.fetchTransactionsService.exec({ id: user.id })
       return ok(result)
     } catch (error) {
       console.log(error)
