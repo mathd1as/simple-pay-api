@@ -2,7 +2,6 @@ import { HttpResponse } from '@/application/helpers/http'
 import { serverError, ok, badRequest } from '@/application/helpers'
 import { CreateUserService } from '@/domain/services/create-user-service'
 import { CreateUserDTO } from '@/application/dtos/create-user-dto'
-import { CreateUserError } from '@/domain/entities/errors'
 import { Controller } from './controller'
 import { ValidationBuilder as Builder } from '@/application/validators/validation-builder'
 import { Validator } from '../validators/validator'
@@ -30,9 +29,7 @@ export class CreateUserController extends Controller {
       return ok(result)
     } catch (error) {
       console.log(error)
-      if (error instanceof CreateUserError) {
-        return badRequest(error)
-      }
+      if (error instanceof Error && error.name !== 'Error') return badRequest(error)
       return serverError(error)
     }
   }

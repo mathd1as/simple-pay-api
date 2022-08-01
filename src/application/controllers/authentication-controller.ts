@@ -21,9 +21,7 @@ export class AuthenticationController extends Controller {
       return ok(result)
     } catch (error) {
       console.log(error)
-      if (error instanceof Error) {
-        if (error.name !== 'Error') return badRequest(error)
-      }
+      if (error instanceof Error && error.name !== 'Error') return badRequest(error)
       return serverError(error)
     }
   }
