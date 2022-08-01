@@ -4,6 +4,7 @@ import { ok } from '@/application/helpers'
 import { AuthenticationService } from '@/domain/services'
 import { InvalidPasswordError, UserNotFoundError } from '@/domain/entities/errors'
 import { mock, MockProxy } from 'jest-mock-extended'
+import { ServerError } from '@/application/errors'
 
 describe('AuthenticationController', () => {
   let sut: AuthenticationController
@@ -60,6 +61,22 @@ describe('AuthenticationController', () => {
     expect(result).toEqual({
       data: new InvalidPasswordError(),
       statusCode: 400
+    })
+  })
+
+  it('should returns serverError when exec returns throws generic error', async () => {
+    const param = {
+      body: {
+        email: 'not_registred_email',
+        password: 'password'
+      },
+      locals: { user: { id: 1 } }
+    }
+    authenticationService.exec.mockRejectedValue(new Error())
+    const result = await sut.handle(param)
+    expect(result).toEqual({
+      data: new ServerError(),
+      statusCode: 500
     })
   })
 })
