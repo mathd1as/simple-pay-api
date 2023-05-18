@@ -24,5 +24,5 @@ Esta API é baseada no [desafio](https://github.com/pagarme/vagas/blob/master/de
 1. ``npm run build``
 2. ``npm run start``
 
-## Executando os testes
+## Executando os testess
 ``npm run test``
